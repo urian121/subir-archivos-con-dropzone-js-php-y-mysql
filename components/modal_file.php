@@ -15,7 +15,7 @@
                             <h3 class="opacity-75">Suelta archivos aquí o haga clic para subir.</h3>
                         </span>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer-upload">
                         <button type="submit" class="btn btn-primary" id="uploadBtn">
                             Subir
                             <img src="assets/imgs/upload.png" alt="upload" style="width: 20px;">

@@ -37,10 +37,10 @@ body {
   display: none;
 }
 
-.modal-footer {
+.modal-footer-upload {
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 30px;
+  right: 30px;
   width: auto;
   padding: 0;
   z-index: 10;

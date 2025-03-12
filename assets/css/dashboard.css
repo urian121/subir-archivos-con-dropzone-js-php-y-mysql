@@ -1,206 +1,211 @@
-        body {
-            font-family: 'Roboto', Arial, sans-serif;
-            background-color: #f8f9fa;
-        }
+body {
+  font-family: "Roboto", Arial, sans-serif;
+  background-color: #f8f9fa;
+}
 
-        .drive-logo {
-            width: 40px;
-            height: 40px;
-        }
+.drive-logo {
+  width: 40px;
+  height: 40px;
+}
 
-        .search-bar {
-            background-color: #f1f3f4;
-            border-radius: 8px;
-            max-width: 720px;
-        }
+.search-bar {
+  background-color: #f1f3f4;
+  border-radius: 8px;
+  max-width: 720px;
+}
 
-        .search-bar:focus-within {
-            background-color: #fff;
-            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.30), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
-        }
+.search-bar:focus-within {
+  background-color: #fff;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+}
 
-        .search-input {
-            border: none;
-            background: transparent;
-        }
+.search-input {
+  border: none;
+  background: transparent;
+}
 
-        .search-input:focus {
-            box-shadow: none;
-        }
+.search-input:focus {
+  box-shadow: none;
+}
 
-        .avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-        }
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
 
-        .sidebar {
-            min-width: 256px;
-            background-color: #fff;
-            height: calc(100vh - 64px);
-        }
+.sidebar {
+  min-width: 256px;
+  background-color: #fff;
+  height: calc(100vh - 64px);
+}
 
-        .sidebar-item {
-            border-radius: 0 16px 16px 0;
-            font-size: 0.875rem;
-            padding: 6px 12px 6px 24px;
-            margin-right: 12px;
-            color: #202124;
-        }
+.sidebar-item {
+  border-radius: 0 16px 16px 0;
+  font-size: 0.875rem;
+  padding: 6px 12px 6px 24px;
+  margin-right: 12px;
+  color: #202124;
+}
 
-        .sidebar-item:hover {
-            background-color: #f1f3f4;
-        }
+.sidebar-item:hover {
+  background-color: #f1f3f4;
+}
 
-        .sidebar-item.active {
-            background-color: #e8f0fe;
-            color: #1a73e8;
-            font-weight: 500;
-        }
+.sidebar-item.active {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  font-weight: 500;
+}
 
-        .new-button {
-            border-radius: 24px;
-            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.30), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-            padding: 12px 24px;
-            font-size: 0.875rem;
-            margin: 16px 0;
-            transition: box-shadow 0.2s;
-        }
+.new-button {
+  border-radius: 24px;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  padding: 12px 24px;
+  font-size: 0.875rem;
+  margin: 16px 0;
+  transition: box-shadow 0.2s;
+}
 
-        .new-button:hover {
-            box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.30), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
-        }
+.new-button:hover {
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3),
+    0 4px 8px 3px rgba(60, 64, 67, 0.15);
+}
 
-        .file-card {
-            border-radius: 8px;
-            background-color: #fff;
-            transition: background-color 0.2s;
-            position: relative;
-        }
+.file-card {
+  border-radius: 8px;
+  background-color: #fff;
+  transition: background-color 0.2s;
+  position: relative;
+}
 
-        .file-card:hover {
-            background-color: #f1f3f4;
-        }
+.file-card:hover {
+  background-color: #f1f3f4;
+}
 
-        .file-preview {
-            height: 120px;
-            background-color: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px 8px 0 0;
-            overflow: hidden;
-        }
+.file-preview {
+  height: 120px;
+  background-color: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
 
-        .file-preview img {
-            max-width: 100%;
-            max-height: 120px;
-        }
+.file-preview img {
+  max-width: 100%;
+  max-height: 120px;
+}
 
-        .file-name {
-            padding: 8px 12px;
-            font-size: 0.8125rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+.file-name {
+  padding: 8px 12px;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-        .file-menu {
-            position: absolute;
-            right: 4px;
-            top: 4px;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
+.file-menu {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: opacity 0.2s;
+  background-color: #e0e0e0;
+}
 
-        .file-card:hover .file-menu {
-            opacity: 1;
-            background-color: #f1f3f4;
-        }
+.file-card:hover .file-menu {
+  opacity: 1;
+  background-color: #f1f3f4;
+}
 
-        .file-menu:hover {
-            background-color: #e0e0e0;
-        }
+.file-menu:hover {
+  background-color: #6e6e6e !important;
+  color: #e0e0e0 !important;
+}
 
-        .dropdown-menu {
-            padding: 8px 0;
-            border-radius: 8px;
-            box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.30), 0 2px 6px 2px rgba(60, 64, 67, 0.15);
-            border: none;
-        }
+.dropdown-menu {
+  padding: 8px 0;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 2px 6px 2px rgba(60, 64, 67, 0.15);
+  border: none;
+}
 
-        .dropdown-item {
-            padding: 6px 16px;
-            font-size: 0.875rem;
-        }
+.dropdown-item {
+  padding: 6px 16px;
+  font-size: 0.875rem;
+}
 
-        .dropdown-item i {
-            margin-right: 12px;
-            color: #5f6368;
-            width: 20px;
-        }
+.dropdown-item i {
+  margin-right: 12px;
+  color: #5f6368;
+  width: 20px;
+}
 
-        /* Make header sticky */
-        .drive-header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #fff;
-            height: 64px;
-        }
+/* Make header sticky */
+.drive-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  height: 64px;
+}
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .sidebar {
-                position: fixed;
-                left: -100%;
-                z-index: 1030;
-                transition: left 0.3s;
-                box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-            }
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    z-index: 1030;
+    transition: left 0.3s;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  }
 
-            .sidebar.show {
-                left: 0;
-            }
+  .sidebar.show {
+    left: 0;
+  }
 
-            .mobile-menu-toggle {
-                display: block !important;
-            }
-        }
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+}
 
-        /* File type specific styles */
-        .file-video .file-preview {
-            background-color: #202124;
-        }
+/* File type specific styles */
+.file-video .file-preview {
+  background-color: #202124;
+}
 
-        .file-image .file-preview {
-            background-color: #f5f5f5;
-        }
+.file-image .file-preview {
+  background-color: #f5f5f5;
+}
 
-        .file-csv .file-preview {
-            background-color: #e6f4ea;
-        }
+.file-csv .file-preview {
+  background-color: #e6f4ea;
+}
 
-        /* Default file icon */
-        .file-icon {
-            font-size: 48px;
-            color: #5f6368;
-        }
+/* Default file icon */
+.file-icon {
+  font-size: 48px;
+  color: #5f6368;
+}
 
-        .file-video .file-icon {
-            color: #ea4335;
-        }
+.file-video .file-icon {
+  color: #ea4335;
+}
 
-        .file-image .file-icon {
-            color: #fbbc04;
-        }
+.file-image .file-icon {
+  color: #fbbc04;
+}
 
-        .file-csv .file-icon {
-            color: #34a853;
-        }
+.file-csv .file-icon {
+  color: #34a853;
+}
