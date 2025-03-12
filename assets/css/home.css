@@ -1,0 +1,51 @@
+body {
+  background: #eee;
+  font-family: "Roboto", sans-serif;
+}
+
+.dropzone {
+  width: 98%;
+  margin: 1%;
+  border-radius: 5px;
+  transition: 0.2s;
+}
+
+.dropzone.dz-drag-hover {
+  border: 2px solid #3498db !important;
+}
+
+.dz-message.needsclick img {
+  width: 50px;
+  display: block;
+  margin: auto;
+  opacity: 0.6;
+  margin-bottom: 15px;
+}
+
+.dropzone.dz-started .dz-message {
+  display: flex !important;
+  width: 120px;
+  float: right;
+  border: 1px solid rgba(238, 238, 238, 0.36);
+  border-radius: 30px;
+  height: 120px;
+  margin: 16px;
+  transition: 0.2s;
+}
+
+.dropzone.dz-started .dz-message span.text {
+  display: none;
+}
+
+.modal-footer {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: auto;
+  padding: 0;
+  z-index: 10;
+}
+#uploadBtn {
+  display: inline-flex;
+  align-items: center;
+}
