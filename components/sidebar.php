@@ -1,4 +1,4 @@
-<div class="sidebar border-end pt-2" id="sidebar">
+<div class="sidebar pt-2" id="sidebar">
 
     <div class="px-3">
         <button class="new-button btn btn-light d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -10,15 +10,15 @@
     <div class="mt-2">
         <a href="#" class="sidebar-item d-flex align-items-center active text-decoration-none mb-1">
             <i class="bi bi-hdd me-3"></i>
-            <span>My Drive</span>
+            <span>Mis archivos</span>
         </a>
         <a href="#" class="sidebar-item d-flex align-items-center text-decoration-none mb-1">
             <i class="bi bi-star me-3"></i>
-            <span>Starred</span>
+            <span>Favoritos</span>
         </a>
         <a href="#" class="sidebar-item d-flex align-items-center text-decoration-none mb-1">
             <i class="bi bi-trash me-3"></i>
-            <span>Bin</span>
+            <span>Papelera</span>
         </a>
     </div>
 </div>

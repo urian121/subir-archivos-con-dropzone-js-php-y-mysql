@@ -1,0 +1,107 @@
+.content-files {
+  height: calc(100vh - 64px); /* Ajustar basado en la altura de tu cabecera */
+  overflow-y: auto;
+  background-color: #ffffff !important;
+  border-radius: 20px;
+  padding: 16px;
+  margin: 0px 50px 30px 50px;
+}
+
+.content-files .file-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.file-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.file-preview {
+  height: 250px;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 8px 8px 0px 0px;
+  text-align: center; /* Centrado de icono */
+}
+
+.file-preview img,
+.file-preview video {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.file-preview i {
+  font-size: 48px; /* Tamaño más grande para mejor visibilidad */
+  color: #666;
+}
+
+.file-name {
+  padding: 10px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 500;
+  color: #333;
+  border-top: 1px solid #eee;
+}
+
+.dropdown-menu {
+  min-width: 200px;
+}
+
+.file-menu {
+  border: none;
+  background: #e0e0e0 !important;
+  padding: 0;
+}
+
+.file-icon {
+  font-size: 48px;
+  color: #5f6368;
+}
+
+.file-csv .file-icon {
+  color: #edf2fc;
+}
+
+/* Añadir estilos responsivos para pantallas pequeñas */
+@media (max-width: 940px) {
+  .content-files {
+    margin: 0px 20px;
+    padding: 10px;
+  }
+
+  .file-card {
+    margin-bottom: 15px; /* Añadir margen entre las tarjetas */
+  }
+
+  .file-name {
+    font-size: 0.875rem; /* Reducir el tamaño de fuente para pantallas más pequeñas */
+  }
+
+  .file-preview {
+    height: 120px; /* Ajustar altura de la vista previa en pantallas pequeñas */
+  }
+
+  .file-preview i {
+    font-size: 36px; /* Reducir el tamaño del icono en pantallas pequeñas */
+  }
+}
+
+
+.card{
+  background: #f0f0f0 !important;
+  border: none !important;
+  --bs-card-spacer-y: 0rem !important;
+  --bs-card-spacer-x: 0rem !important;
+}
+.card:hover{
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
