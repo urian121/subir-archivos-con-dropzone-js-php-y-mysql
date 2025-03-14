@@ -1,12 +1,19 @@
+/*function eliminarArchivo(id, nombre) {
+  console.log(id, nombre);
+  // Mostrar el modal
+  new bootstrap.Modal(document.getElementById("eliminarArchivoModal")).show();
+}*/
+
 document.addEventListener("DOMContentLoaded", function () {
   const enlaces = document.querySelectorAll(".eliminar-archivo");
 
-  enlaces.forEach((enlace) => {
+  enlaces?.forEach((enlace) => {
     enlace.addEventListener("click", function (e) {
       e.preventDefault();
 
-      const id = this.getAttribute("data-id");  
+      const id = this.getAttribute("data-id");
       document.getElementById("idArchivoEliminar").value = id;
+      console.log(id);
 
       // Mostrar el modal
       new bootstrap.Modal(

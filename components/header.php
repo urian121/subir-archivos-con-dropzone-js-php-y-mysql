@@ -1,28 +1,37 @@
 <div class="drive-header">
-    <div class="d-flex align-items-center px-3 h-100">
-        <button class="btn d-none mobile-menu-toggle me-2" id="sidebarToggle">
-            <i class="bi bi-list"></i>
-        </button>
+    <div class="d-flex flex-column flex-md-row align-items-center px-3 h-100">
+        <!-- Primera fila en móvil, todo en línea en desktop -->
+        <div class="d-flex align-items-center w-100 justify-content-between justify-content-md-start">
+            <!-- Botón de menú (ajustado para estar siempre visible en móvil) -->
+            <button class="btn mobile-menu-toggle me-2 d-none d-md-none" id="sidebarToggle">
+                <i class="bi bi-list"></i>
+            </button>
 
-        <!-- Drive logo and title -->
-        <div class="d-flex align-items-center me-4">
-            <a href="index.php" class="text-decoration-none">
-                <img src="assets/imgs/logo-edumetrix-drive.png" alt="driver edumetrisc" style="width: 150px; padding: 5px">
-            </a>
+            <!-- Drive logo and title (centrado en móvil) -->
+            <div class="d-flex align-items-center me-md-4 mx-auto mx-md-0">
+                <a href="./" class="text-decoration-none">
+                    <img src="assets/imgs/logo-edumetrix-drive.png" alt="driver edumetrisc">
+                </a>
+            </div>
+
+            <!-- Search bar (en línea en desktop, oculto en móvil) -->
+            <div class="search-bar d-none d-md-flex align-items-center flex-grow-1 py-1 px-3 mx-auto">
+                <i class="bi bi-search me-3 text-secondary"></i>
+                <input type="text" id="searchInput" class="search-input form-control border-0 shadow-none"
+                    placeholder="Buscar archivos">
+            </div>
+
+            <!-- Filtro select (visible solo en desktop) -->
+            <div class="ms-auto d-none d-md-block px-3">
+                <?php include('components/filtro_select.php'); ?>
+            </div>
         </div>
 
-        <!-- Search bar -->
-        <div class="search-bar d-flex align-items-center flex-grow-1 py-1 px-3 mx-auto">
+        <!-- Search bar (segunda fila, solo visible en móvil) -->
+        <div class="search-bar d-flex d-md-none align-items-center w-100 py-1 px-3 mt-2">
             <i class="bi bi-search me-3 text-secondary"></i>
-            <input type="text" id="searchInput" class="search-input form-control border-0 shadow-none"
+            <input type="text" id="searchInputMobile" class="search-input form-control border-0 shadow-none"
                 placeholder="Buscar archivos">
-        </div>
-
-        <?php include('components/filtro_select.php'); ?>
-
-        <!-- User profile -->
-        <div class="ms-auto">
-            <img src="assets/imgs/user.png" alt="User Profile" class="avatar">
         </div>
     </div>
 </div>

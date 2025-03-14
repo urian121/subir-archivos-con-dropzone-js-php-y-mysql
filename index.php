@@ -1,3 +1,12 @@
+<?php
+include_once 'settings/auth.php';
+$infUser = obtenerSesionActiva();
+if (!$infUser) {
+	header("location:./auth");
+	exit();
+}
+include_once 'settings/config.php';
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,7 +14,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Edumetrics Drive</title>
-	<link rel="shortcut icon" href="assets/imgs/logo-edumetrix-drive.png" />
+	<link rel="shortcut icon" href="assets/imgs/icon.ico" />
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css?v=<?php echo mt_rand(); ?>">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="assets/css/dashboard.css?v=<?php echo mt_rand(); ?>">
@@ -13,19 +22,24 @@
 	<link rel="stylesheet" href="assets/css/dropzone.min.css?v=<?php echo mt_rand(); ?>" />
 	<link rel="stylesheet" href="assets/css/home.css?v=<?php echo mt_rand(); ?>" />
 	<link rel="stylesheet" href="assets/css/preview_files.css">
-
+	<link rel="stylesheet" href="assets/css/loader.css">
 </head>
 
 <body>
 
+	<div id='loader'></div>
+
 	<div class="container-fluid p-0">
 		<?php
-		include('settings/config.php');
-		include('settings/bd.php');
+		include_once(SETTINGS_BD);
 		include('functions/funciones.php');
 		$archivos_por_extensiones = archivosPorExtension($servidor);
 		include('components/header.php');
 		$resultado = obtenerArchivos($servidor);
+
+		echo '<pre>';
+		//print_r($infUser);
+		echo '</pre>';
 		?>
 
 		<div class="d-flex">
@@ -53,11 +67,13 @@
 
 	<script src="assets/js/axios.min.js"></script>
 	<script src="assets/js/dropzone.min.js?v=<?php echo mt_rand(); ?>"></script>
-	<script src="assets/js/eliminar_archivo.js?v=<?php echo mt_rand(); ?>"></script>
-	<script src="assets/js/search_files.js"></script>
+	<script src="assets/js/search_files.js?v=<?php echo mt_rand(); ?>"></script>
 	<script src="assets/js/fitro_files_extension.js"></script>
+	<script src="assets/js/eliminar_archivo.js?v=<?php echo mt_rand(); ?>"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
+			// Mostrar el loader
+			$("#loader").fadeOut("slow");
 			// Desactivar el autodescubrimiento
 			Dropzone.autoDiscover = false;
 

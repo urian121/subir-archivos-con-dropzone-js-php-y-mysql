@@ -17,19 +17,19 @@ define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 
 
-
 // ----------------------------
 // Configuración de las rutas
 // ----------------------------
-define('NAME_APP', 'tecnoescuelagaitan.local');
+define('NAME_APP', 'driver-edumetrics');
 define('BASE_PATH', __DIR__ . '../../'); 
 //define('BASE_HOME', 'https://tecnoescuelagaitan.com/' . NAME_APP . '/');
 define('BASE_HOME', 'http://localhost/' . NAME_APP . '/');
 define('BASE_PATH_COMPONENTS', BASE_PATH . '/components');
 define('BASE_STATIC', 'http://' . $_SERVER['SERVER_NAME'] . '/' . NAME_APP . '/');
-define('ACTION_LOGIN', BASE_HOME . '/functions/action_login.php');
+
 // Define Rutas Absolutas de Archivos y Directorios
-define('SETTINGS_BD', BASE_PATH . 'config/settingBD.php');
+define('SETTINGS_BD', BASE_PATH . 'settings/settingBD.php');
+define('ACTION_LOGIN', BASE_HOME . 'functions/action_login.php');
 
 
 // -------------------------------

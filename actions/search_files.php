@@ -1,10 +1,10 @@
 <?php
 include('../settings/config.php');
-include('../settings/bd.php');
+include('../settings/settingBD.php');
 
 $q = isset($_GET['q']) ? $_GET['q'] : '';
 
-$query = "SELECT id, nombre_original, nombre_sistema, extension, ruta FROM archivos WHERE nombre_original LIKE '%$q%'";
+$query = "SELECT id, nombre_original, nombre_sistema, extension, ruta FROM tbl_files WHERE nombre_original LIKE '%$q%'";
 $resultado_files = mysqli_query($servidor, $query);
 
 if ($resultado_files) {
@@ -61,16 +61,16 @@ if ($resultado_files) {
                         <li><a class="dropdown-item" href="<?php echo $archivo['ruta']; ?>" target="_blank"><i
                                     class="bi bi-box-arrow-up-right"></i> Abrir archivo</a></li>
                         <li><a class="dropdown-item" download="<?php echo $archivo['nombre_sistema']; ?>"
-                                href="descargar.php?id=<?php echo $archivo['id']; ?>"><i class="bi bi-download"></i>
+                                href="actions/descargar.php?id=<?php echo $archivo['id']; ?>"><i class="bi bi-download"></i>
                                 Descargar</a></li>
-                        <li><a class="dropdown-item eliminar-archivo" href="#" data-id="<?php echo $archivo['id']; ?>"
+                        <li><a class="dropdown-item eliminar-archivo" onclick="eliminarArchivo('<?php echo $archivo['id']; ?>', '<?php echo $archivo['nombre_original']; ?>')" href="#" data-id="<?php echo $archivo['id']; ?>"
                                 data-nombre="<?php echo htmlspecialchars($archivo['nombre_original']); ?>"><i
                                     class="bi bi-trash"></i> Eliminar archivo</a></li>
                     </ul>
                 </div>
                 <div class="card-body d-flex flex-column">
                     <a href="<?php echo $archivo['ruta']; ?>" target="_blank" class="text-decoration-none text-dark">
-                        <div class="file-preview mb-3 d-flex justify-content-center align-items-center" style="height: 200px;">
+                        <div class="file-preview mb-3 d-flex justify-content-center align-items-center" style="height: 130px;">
                             <?php if (empty($preview)): ?>
                                 <!-- Si no hay vista previa, mostramos el icono centrado -->
                                 <i class="bi <?php echo $icon; ?> file-icon"></i>

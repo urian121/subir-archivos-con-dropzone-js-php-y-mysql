@@ -7,7 +7,9 @@ body {
   width: 40px;
   height: 40px;
 }
-
+.new-button {
+  background-color: #fff;
+}
 .search-bar {
   background-color: #edf2fc;
   border-radius: 25px;
@@ -37,12 +39,11 @@ body {
 
 .sidebar {
   min-width: 256px;
-  background-color: #f7f9fc;
   height: calc(100vh - 64px);
 }
 
 .sidebar-item {
-  border-radius: 0 16px 16px 0;
+  border-radius: 0 25px 25px 0;
   font-size: 0.875rem;
   padding: 6px 12px 6px 24px;
   margin-right: 12px;
@@ -60,7 +61,7 @@ body {
 }
 
 .new-button {
-  border-radius: 24px;
+  border-radius: 50px;
   box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
     0 1px 3px 1px rgba(60, 64, 67, 0.15);
   padding: 12px 24px;
@@ -122,11 +123,11 @@ body {
 
 /* Make header sticky */
 .drive-header {
+  background-color: #f7f9fc !important;
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #f7f9fc;
-  height: 64px;
+  height: 65px;
 }
 
 /* Responsive adjustments */
@@ -145,5 +146,22 @@ body {
   .mobile-menu-toggle {
     display: block !important;
   }
-}
 
+  .drive-header {
+    height: auto;
+    padding: 10px 0;
+  }
+
+  /* Mostrar el botón de menú en móvil */
+  .mobile-menu-toggle {
+    display: block !important;
+  }
+
+  /* Centrar el logo en móvil */
+  .drive-header .d-flex.align-items-center a {
+    margin: 0 auto;
+  }
+  .search-bar {
+    width: 85% !important;
+  }
+}

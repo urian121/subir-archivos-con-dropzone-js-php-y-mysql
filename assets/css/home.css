@@ -46,18 +46,13 @@
 }
 
 /** custon select html */
-.custom-select-container {
-  width: 250px;
-  position: relative;
-}
-
 select.custom-select {
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  background: white;
+  border-radius: 25px;
+  border: 1px solid #e3e3e3;
+  color: #464545;
   cursor: pointer;
 }
 
@@ -72,3 +67,7 @@ select.custom-select {
   font-size: 18px;
 }
 /** fin del custom select */
+
+.bi{
+  font-size: 20px;
+}

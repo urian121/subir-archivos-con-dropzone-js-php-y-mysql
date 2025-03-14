@@ -1,6 +1,6 @@
 <?php
 include('../settings/config.php');
-include('../settings/bd.php');
+include('../settings/settingBD.php');
 
 // Directorio de carga
 $uploadDir = '../uploads';
@@ -39,7 +39,7 @@ if (!empty($_FILES)) {
 		$tamanoEsc = intval($tamano);
 
 		// Construir consulta SQL
-		$query = "INSERT INTO archivos (nombre_original, nombre_sistema, ruta, extension, tipo_mime, tamano, fecha_subida) 
+		$query = "INSERT INTO tbl_files (nombre_original, nombre_sistema, ruta, extension, tipo_mime, tamano, fecha_subida) 
                  VALUES ('$nombreOriginalEsc', '$newFileNameEsc', '$rutaRelativaEsc', '$extensionEsc', '$tipoMimeEsc', $tamanoEsc, NOW())";
 
 		// Ejecutar la consulta

@@ -1,14 +1,14 @@
 <?php
 include('../settings/config.php');
-include('../settings/bd.php');
+include('../settings/settingBD.php');
 
 
 // Obtener y validar el ID del archivo
 $id_archivo = trim($_GET['id']);
 
-$path = "uploads/";
+$path = "../uploads/";
 // Consultar el archivo en la base de datos
-$query = "SELECT * FROM archivos WHERE id = $id_archivo AND activo = 1";
+$query = "SELECT * FROM tbl_files WHERE id = $id_archivo AND activo = 1";
 $resultado = $servidor->query($query);
 
 // Verificar si el archivo existe

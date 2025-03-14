@@ -23,7 +23,7 @@ function obtenerArchivos($servidor)
 
 function archivosPorExtension($servidor)
 {
-    $query = "SELECT extension FROM archivos WHERE activo = 1 GROUP BY extension";
+    $query = "SELECT extension FROM tbl_files WHERE activo = 1 GROUP BY extension";
     $resultado = $servidor->query($query);
 
     if (!$resultado) {

@@ -1,12 +1,12 @@
 <?php
 sleep(1);
 include('../settings/config.php');
-include('../settings/bd.php');
+include('../settings/settingBD.php');
 
-$extension = isset($_GET['extension']) ? $_GET['extension'] : '';
+$extension = isset($_GET['extension']) ? trim($_GET['extension']) : '';
 $where = ($extension == 'all') ? '' : "WHERE extension LIKE '%$extension%'";
 
-$query = "SELECT * FROM archivos $where";
+$query = "SELECT * FROM tbl_files $where";
 $result_files_extension = mysqli_query($servidor, $query);
 
 if ($result_files_extension) {
@@ -63,7 +63,7 @@ if ($result_files_extension) {
                         <li><a class="dropdown-item" href="<?php echo $archivo['ruta']; ?>" target="_blank"><i
                                     class="bi bi-box-arrow-up-right"></i> Abrir archivo</a></li>
                         <li><a class="dropdown-item" download="<?php echo $archivo['nombre_sistema']; ?>"
-                                href="descargar.php?id=<?php echo $archivo['id']; ?>"><i class="bi bi-download"></i>
+                                href="actions/descargar.php?id=<?php echo $archivo['id']; ?>"><i class="bi bi-download"></i>
                                 Descargar</a></li>
                         <li><a class="dropdown-item eliminar-archivo" href="#" data-id="<?php echo $archivo['id']; ?>"
                                 data-nombre="<?php echo htmlspecialchars($archivo['nombre_original']); ?>"><i
@@ -72,7 +72,7 @@ if ($result_files_extension) {
                 </div>
                 <div class="card-body d-flex flex-column">
                     <a href="<?php echo $archivo['ruta']; ?>" target="_blank" class="text-decoration-none text-dark">
-                        <div class="file-preview mb-3 d-flex justify-content-center align-items-center" style="height: 200px;">
+                        <div class="file-preview mb-3 d-flex justify-content-center align-items-center" style="height: 130px;">
                             <?php if (empty($preview)): ?>
                                 <!-- Si no hay vista previa, mostramos el icono centrado -->
                                 <i class="bi <?php echo $icon; ?> file-icon"></i>
