@@ -1,9 +1,9 @@
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {
   const searchInput = document.getElementById("searchInput");
   const fileContainer = document.getElementById("searchResults");
 
   function fetchFiles(query = "") {
-    fetch(`actions/search_files.php?q=${encodeURIComponent(query)}`)
+    fetch(`components/result_search_file.php?q=${encodeURIComponent(query)}`)
       .then((response) => response.text())
       .then((html) => {
         fileContainer.innerHTML = html;
@@ -16,4 +16,4 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   fetchFiles(); // Cargar archivos al inicio
-});
+});*/

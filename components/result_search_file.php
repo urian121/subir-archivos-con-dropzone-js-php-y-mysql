@@ -1,17 +1,14 @@
 <?php
-sleep(1);
-include('../settings/config.php');
-include('../settings/settingBD.php');
+include_once '../settings/config.php';
+include_once(SETTINGS_BD);
+include('../functions/funciones.php');
 
-$extension = isset($_GET['extension']) ? trim($_GET['extension']) : '';
-$where = ($extension == 'all') ? '' : "WHERE extension LIKE '%$extension%'";
+$query_search = isset($_GET['q']) ? $_GET['q'] : '';
+// Obtener archivos según el criterio de búsqueda
+$list_files = obtenerArchivos($servidor, $query_search);
 
-$query = "SELECT * FROM tbl_files $where";
-$result_files_extension = mysqli_query($servidor, $query);
 
-if ($result_files_extension) {
-
-    foreach ($result_files_extension as $archivo) {
+    foreach ($list_files as $archivo) {
         // Obtener la extensión del archivo
         $extension = strtolower(pathinfo($archivo['nombre_sistema'], PATHINFO_EXTENSION));
         // Determinar el tipo de vista previa
@@ -52,7 +49,7 @@ if ($result_files_extension) {
             $preview = "<i class='bi $icon file-icon'></i>";
         }
 ?>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 div-files">
             <div class="card h-100">
                 <div class="dropdown">
                     <button class="btn file-menu p-0" type="button" id="fileMenu<?php echo $archivo['id']; ?>"
@@ -87,8 +84,4 @@ if ($result_files_extension) {
                 </div>
             </div>
         </div>
-
-<?php }
-} else {
-    echo "<p class='text-danger text-center'>No se encontraron archivos.</p>";
-} ?>
+<?php } ?>

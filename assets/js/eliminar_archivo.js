@@ -1,48 +1,23 @@
-/*function eliminarArchivo(id, nombre) {
-  console.log(id, nombre);
+window.eliminarArchivo = function (idFile, nombreFile) {
+  console.log(idFile, nombreFile);
+
   // Mostrar el modal
-  new bootstrap.Modal(document.getElementById("eliminarArchivoModal")).show();
-}*/
-
-document.addEventListener("DOMContentLoaded", function () {
-  const enlaces = document.querySelectorAll(".eliminar-archivo");
-
-  enlaces?.forEach((enlace) => {
-    enlace.addEventListener("click", function (e) {
-      e.preventDefault();
-
-      const id = this.getAttribute("data-id");
-      document.getElementById("idArchivoEliminar").value = id;
-      console.log(id);
-
-      // Mostrar el modal
-      new bootstrap.Modal(
-        document.getElementById("eliminarArchivoModal")
-      ).show();
-    });
-  });
+  let idModal = document.querySelector("#eliminarArchivoModal");
+  new bootstrap.Modal(idModal).show();
 
   // Manejar confirmación de eliminación
   document
     .getElementById("confirmarEliminar")
     .addEventListener("click", async function () {
-      const id = document.getElementById("idArchivoEliminar").value;
-
       try {
-        const { data } = await axios.post("eliminar.php", { id_archivo: id });
+        const { data } = await axios.post("actions/eliminar.php", {
+          id_archivo: idFile,
+        });
 
         if (data.success) {
           // Cerrar el modal
-          const modal = bootstrap.Modal.getInstance(
-            document.getElementById("eliminarArchivoModal")
-          );
+          const modal = bootstrap.Modal.getInstance(idModal);
           modal.hide();
-
-          // Eliminar el elemento de la interfaz
-          document
-            .querySelector(`[data-id="${id}"]`)
-            .closest(".col-12")
-            ?.remove();
 
           window.location.reload();
         } else {
@@ -53,4 +28,4 @@ document.addEventListener("DOMContentLoaded", function () {
         alert("Error al procesar la solicitud.");
       }
     });
-});
+};

@@ -35,11 +35,9 @@ include_once 'settings/config.php';
 		include('functions/funciones.php');
 		$archivos_por_extensiones = archivosPorExtension($servidor);
 		include('components/header.php');
-		$resultado = obtenerArchivos($servidor);
+		include('components/modalEliminarArchivoModal.html');
+		include('components/modal_update_user.php');
 
-		echo '<pre>';
-		//print_r($infUser);
-		echo '</pre>';
 		?>
 
 		<div class="d-flex">
@@ -49,12 +47,34 @@ include_once 'settings/config.php';
 			?>
 
 			<div class="flex-grow-1 p-4 content-files">
+				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+						<?php
+						// Obtener carpetas (esto depende de cómo almacenas las carpetas en tu BD)
+						$query_folders = "SELECT id_folder, nombre_folder FROM tbl_folders";
+						$resultado_folders = mysqli_query($servidor, $query_folders);
+						?>
+						<div class="mt-4 mb-4">
+							<h3>📂 Carpetas</h3>
+							<div class="d-flex gap-3">
+								<?php if ($resultado_folders) {
+									foreach ($resultado_folders as $folder) { ?>
+										<div class="folder border p-3" data-folder="<?php echo $folder['id_folder']; ?>">
+											<h4>📁 <?php echo $folder['nombre_folder']; ?></h4>
+											<ul class="list-group connected-list"></ul>
+										</div>
+								<?php }
+								} ?>
+							</div>
+						</div>
+					</div>
+				</div>
+
 				<div id="searchResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-
 					<?php
-					include('components/modalEliminarArchivoModal.html');
+					$list_files = obtenerArchivos($servidor, $query_search = '');
+					include('components/files.php');
 					?>
-
 				</div>
 			</div>
 		</div>
@@ -67,105 +87,43 @@ include_once 'settings/config.php';
 
 	<script src="assets/js/axios.min.js"></script>
 	<script src="assets/js/dropzone.min.js?v=<?php echo mt_rand(); ?>"></script>
+	<script src="assets/js/custom_dropzone.js?v=<?php echo mt_rand(); ?>"></script>
+
 	<script src="assets/js/search_files.js?v=<?php echo mt_rand(); ?>"></script>
 	<script src="assets/js/fitro_files_extension.js"></script>
 	<script src="assets/js/eliminar_archivo.js?v=<?php echo mt_rand(); ?>"></script>
+
+	<script src="assets/js/sortable.min.js?v=<?php echo mt_rand(); ?>"></script>
+	<script src="assets/js/custom_sortable.js?v=<?php echo mt_rand(); ?>"></script>
+
 	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			// Mostrar el loader
-			$("#loader").fadeOut("slow");
-			// Desactivar el autodescubrimiento
-			Dropzone.autoDiscover = false;
+		document.addEventListener("DOMContentLoaded", function() {
+			// Cuando se hace clic en una carpeta, obtener los archivos dentro de esa carpeta
+			document.querySelectorAll('.folder').forEach((folder) => {
+				folder.addEventListener('click', function() {
+					let folderId = folder.getAttribute('data-folder');
 
-			// Verificar si ya existe una instancia de Dropzone en el elemento
-			var dropzoneElement = document.getElementById("demo-upload");
+					// Realizar la solicitud para obtener los archivos de la carpeta
+					fetch(`get_files_folder.php?folder_id=${folderId}`)
+						.then((response) => response.text()) // Cambiar .json() por .text() ya que el PHP devuelve HTML
+						.then((data) => {
+							console.log('Archivos en la carpeta:', data); // Ver los archivos en la consola
 
-			// Si ya hay una instancia, la destruimos primero
-			if (dropzoneElement.dropzone) {
-				dropzoneElement.dropzone.destroy();
-			}
+							// Mostrar los archivos en la UI
+							const filesContainer = document.getElementById('searchResults'); // El contenedor donde mostrar los archivos
+							filesContainer.innerHTML = ''; // Limpiar el contenido antes de mostrar los nuevos archivos
 
-			// Inicializar Dropzone
-			var myDropzone = new Dropzone("#demo-upload", {
-				url: "./actions/upload.php", // URL de destino
-				paramName: "file", // Nombre del parámetro de archivo
-				maxFilesize: 10, // Tamaño máximo en MB
-				maxFiles: 10, // Cantidad máxima de archivos
-				acceptedFiles: "image/*,application/pdf,text/plain,.zip,.tar,.gz,.sql,.md,.markdown,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,video/*",
-				//acceptedFiles: "image/*,application/pdf",
-				dictDefaultMessage: "Arrastra y suelta archivos aquí o haz clic para subir",
-				autoProcessQueue: false, // No procesar automáticamente la cola
-				addRemoveLinks: true
-			});
-
-			// Manejar el envío del formulario
-			dropzoneElement.addEventListener("submit", function(e) {
-				e.preventDefault(); // Evitar el envío del formulario
-				e.stopPropagation(); // Evitar la propagación del evento de submit
-			});
-
-			// Configurar el botón de subida
-			document.getElementById("uploadBtn").addEventListener("click", function(e) {
-				e.preventDefault();
-				e.stopPropagation();
-
-				if (myDropzone.getQueuedFiles().length > 0) {
-					console.log("Subiendo archivos...");
-					myDropzone.processQueue();
-				} else {
-					alert("No hay archivos para subir.");
-				}
-			});
-
-			// Verificar cuando se completen todos los archivos
-			myDropzone.on("queuecomplete", function() {
-				console.log("Todos los archivos han sido subidos.");
-				// Eliminar todos los archivos de la zona de carga
-				myDropzone.removeAllFiles(true);
-
-				// Cerrar el modal
-				var modal = bootstrap.Modal.getInstance(document.getElementById('exampleModal'));
-				modal.hide();
-				window.location.reload();
-			});
-
-			// Opcional: Para mostrar mensaje de éxito cuando todos los archivos se suban
-			myDropzone.on("complete", function(file) {
-				if (myDropzone.getUploadingFiles().length === 0 && myDropzone.getQueuedFiles().length === 0) {
-					console.log("Todos los archivos han sido subidos.");
-				}
-			});
-
-
-
-			// Sidebar toggle
-			const sidebarToggle = document.getElementById('sidebarToggle');
-			const sidebar = document.getElementById('sidebar');
-
-			if (sidebarToggle) {
-				sidebarToggle.addEventListener('click', function() {
-					sidebar.classList.toggle('show');
+							// Insertar el HTML recibido en el contenedor
+							filesContainer.innerHTML = data; // Se inserta el HTML directamente
+						})
+						.catch((error) => {
+							console.error('Error al cargar los archivos:', error);
+						});
 				});
-			}
-
-			// Close sidebar when clicking outside on mobile
-			document.addEventListener('click', function(event) {
-				if (window.innerWidth <= 768 &&
-					sidebar.classList.contains('show') &&
-					!sidebar.contains(event.target) &&
-					event.target !== sidebarToggle) {
-					sidebar.classList.remove('show');
-				}
-			});
-
-			// Handle window resize
-			window.addEventListener('resize', function() {
-				if (window.innerWidth > 768) {
-					sidebar.classList.remove('show');
-				}
 			});
 		});
 	</script>
+
 </body>
 
 </html>

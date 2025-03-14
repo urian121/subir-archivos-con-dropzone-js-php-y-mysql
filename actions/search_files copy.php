@@ -1,17 +1,15 @@
 <?php
-sleep(1);
 include('../settings/config.php');
 include('../settings/settingBD.php');
 
-$extension = isset($_GET['extension']) ? trim($_GET['extension']) : '';
-$where = ($extension == 'all') ? '' : "WHERE extension LIKE '%$extension%'";
+$q = isset($_GET['q']) ? $_GET['q'] : '';
 
-$query = "SELECT * FROM tbl_files $where";
-$result_files_extension = mysqli_query($servidor, $query);
+$query = "SELECT id, nombre_original, nombre_sistema, extension, ruta FROM tbl_files WHERE nombre_original LIKE '%$q%'";
+$resultado_files = mysqli_query($servidor, $query);
 
-if ($result_files_extension) {
+if ($resultado_files) {
 
-    foreach ($result_files_extension as $archivo) {
+    foreach ($resultado_files as $archivo) {
         // Obtener la extensión del archivo
         $extension = strtolower(pathinfo($archivo['nombre_sistema'], PATHINFO_EXTENSION));
         // Determinar el tipo de vista previa

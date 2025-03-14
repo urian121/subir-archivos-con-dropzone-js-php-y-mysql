@@ -8,7 +8,7 @@
     </div>
 
     <div class="mt-2">
-        <a href="#" class="sidebar-item d-flex align-items-center active text-decoration-none mb-1">
+        <a href="./" class="sidebar-item d-flex align-items-center active text-decoration-none mb-1">
             <i class="bi bi-hdd me-3"></i>
             <span>Mis archivos</span>
         </a>
@@ -25,7 +25,7 @@
             <span>Papelera</span>
         </a>
 
-        <a href="#" class="sidebar-item d-flex align-items-center text-decoration-none mb-1">
+        <a href="#" data-bs-toggle="modal" data-bs-target="#updateUser" class="sidebar-item d-flex align-items-center text-decoration-none mb-1">
             <i class="bi bi-person me-3"></i>
             <span>Mi perfil</span>
         </a>
