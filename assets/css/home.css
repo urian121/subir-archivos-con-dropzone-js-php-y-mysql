@@ -2,8 +2,20 @@ h1{
   width: 100%;
 }
 .folder{
-  cursor: pointer;
+  border-radius: 10px;
+  background-color: #ebebeb;
 }
+
+.folder:hover{
+  cursor: pointer;
+  background-color: #c0bfbf;
+}
+
+.active-folder{
+  background-color: #c0bfbf;
+  border: 1px solid #000;
+}
+
 .titulo_modal{
   text-align: center;
 }
@@ -79,4 +91,9 @@ select.custom-select {
 
 .bi{
   font-size: 20px;
+}
+.sidebarToggle{
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 10px;
 }

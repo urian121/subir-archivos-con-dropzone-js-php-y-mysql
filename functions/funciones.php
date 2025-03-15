@@ -1,12 +1,30 @@
 <?php
-function obtenerArchivos($servidor, $query_search)
+function obtenerArchivosHome($servidor, $query_search)
 {
     // Construir la consulta base
     $query = "SELECT 
             id, nombre_original,
             nombre_sistema, extension,
             ruta FROM tbl_files
-        WHERE activo = 1 AND id_folder = 0 AND  nombre_original LIKE '%$query_search%'  ORDER BY id DESC";
+        WHERE activo = 1 AND id_folder = 0 AND nombre_original LIKE '%$query_search%'  ORDER BY id DESC";
+    $resultado = $servidor->query($query);
+
+    $archivos = [];
+    while ($archivo = $resultado->fetch_assoc()) {
+        $archivos[] = $archivo;
+    }
+
+    return $archivos;
+}
+
+function obtenerArchivosCompartidos($servidor, $query_search)
+{
+    // Construir la consulta base
+    $query = "SELECT 
+            id, nombre_original,
+            nombre_sistema, extension,
+            ruta FROM tbl_files
+        WHERE activo = 1 AND  shared_files=1 AND  nombre_original LIKE '%$query_search%'  ORDER BY id DESC";
     $resultado = $servidor->query($query);
     $archivos = [];
     while ($archivo = $resultado->fetch_assoc()) {
@@ -80,7 +98,8 @@ function obtenerVistaPrevia($archivo)
 
     if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'])) {
         // Vista previa de imágenes y SVG
-        return "<img src='{$archivo['ruta']}' class='file-preview-img' alt='Vista previa'>";
+        $ruta_file = UPLOADS_PATH . $archivo['nombre_sistema'];
+        return "<img src='{$ruta_file}' class='file-preview-img' alt='Vista previa'>";
     } elseif (in_array($extension, ['mp4', 'webm', 'ogg'])) {
         // Vista previa de videos
         return "<video class='file-preview-video' controls>

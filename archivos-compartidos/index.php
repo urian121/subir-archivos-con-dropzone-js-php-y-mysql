@@ -1,11 +1,11 @@
 <?php
-include_once 'settings/auth.php';
+include_once '../settings/auth.php';
 $infUser = obtenerSesionActiva();
 if (!$infUser) {
-	header("location:./auth");
+	header("location:../auth");
 	exit();
 }
-include_once 'settings/config.php';
+include_once '../settings/config.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -33,7 +33,6 @@ include_once 'settings/config.php';
 		<?php
 		include_once(SETTINGS_BD);
 		include(FUNCTIONS_PATH . '/funciones.php');
-		$archivos_por_extensiones = archivosPorExtension($servidor);
 		include(BASE_PATH_COMPONENTS . '/header.php');
 		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivoModal.html');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
@@ -47,32 +46,9 @@ include_once 'settings/config.php';
 			?>
 
 			<div class="flex-grow-1 p-4 content-files">
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-						<?php
-						// Obtener carpetas (esto depende de cómo almacenas las carpetas en tu BD)
-						$query_folders = "SELECT id_folder, nombre_folder FROM tbl_folders";
-						$resultado_folders = mysqli_query($servidor, $query_folders);
-						?>
-						<div class="mt-4 mb-4">
-							<div class="d-flex gap-3">
-								<?php if ($resultado_folders) {
-									foreach ($resultado_folders as $folder) { ?>
-										<div class="folder border p-3" data-folder="<?php echo $folder['id_folder']; ?>">
-											<h4>📁</h4>
-											<h4><?php echo $folder['nombre_folder']; ?></h4>
-											<ul class="list-group connected-list"></ul>
-										</div>
-								<?php }
-								} ?>
-							</div>
-						</div>
-					</div>
-				</div>
-
 				<div id="searchResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
 					<?php
-					$list_files = obtenerArchivosHome($servidor, $query_search = '');
+					$list_files = obtenerArchivosCompartidos($servidor, $query_search = '');
 					include(BASE_PATH_COMPONENTS . '/files.php');
 					?>
 				</div>

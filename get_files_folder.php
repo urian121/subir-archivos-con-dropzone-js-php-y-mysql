@@ -3,7 +3,7 @@ include('settings/config.php');
 include('settings/settingBD.php');
 include('functions/funciones.php');
 
-$folderId = trim($_GET['folder_id']); 
+$folderId = trim($_GET['folder_id']);
 $list_files_folder = obtenerArchivosPorCarpeta($servidor, $folderId);
 
 if ($list_files_folder) {
@@ -27,14 +27,25 @@ if ($list_files_folder) {
                         <i class="bi bi-three-dots-vertical"></i>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="fileMenu<?php echo $archivo['id']; ?>">
-                        <li><a class="dropdown-item" href="<?php echo $archivo['ruta']; ?>" target="_blank"><i
-                                    class="bi bi-box-arrow-up-right"></i> Abrir archivo</a></li>
-                        <li><a class="dropdown-item" download="<?php echo $archivo['nombre_sistema']; ?>"
-                                href="actions/descargar.php?id=<?php echo $archivo['id']; ?>"><i class="bi bi-download"></i>
-                                Descargar</a></li>
-                        <li><a class="dropdown-item eliminar-archivo" onclick="eliminarArchivo('<?php echo $archivo['id']; ?>', '<?php echo $archivo['nombre_original']; ?>')" href="#" data-id="<?php echo $archivo['id']; ?>"
-                                data-nombre="<?php echo htmlspecialchars($archivo['nombre_original']); ?>"><i
-                                    class="bi bi-trash"></i> Eliminar archivo</a></li>
+                        <li>
+                            <a class="dropdown-item" href="<?php echo UPLOADS_PATH . $archivo['nombre_sistema']; ?>" target="_blank"><i
+                                    class="bi bi-box-arrow-up-right"></i>
+                                Abrir archivo
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" download="<?php echo $archivo['nombre_sistema']; ?>"
+                                href="<?php echo DOWNLOADS_FILE; ?>?id=<?php echo $archivo['id']; ?>"><i class="bi bi-download"></i>
+                                Descargar
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item eliminar-archivo" onclick="eliminarArchivo('<?php echo $archivo['id']; ?>', '<?php echo $archivo['nombre_original']; ?>')" href="#" data-id="<?php echo $archivo['id']; ?>"
+                                data-nombre="<?php echo htmlspecialchars($archivo['nombre_original']); ?>">
+                                <i class="bi bi-trash"></i>
+                                Eliminar archivo
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="card-body d-flex flex-column">

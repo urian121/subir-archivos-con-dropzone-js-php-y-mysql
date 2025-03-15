@@ -39,8 +39,8 @@ if (!empty($_FILES)) {
 		$tamanoEsc = intval($tamano);
 
 		// Construir consulta SQL
-		$query = "INSERT INTO tbl_files (nombre_original, nombre_sistema, ruta, extension, tipo_mime, tamano, fecha_subida) 
-                 VALUES ('$nombreOriginalEsc', '$newFileNameEsc', '$rutaRelativaEsc', '$extensionEsc', '$tipoMimeEsc', $tamanoEsc, NOW())";
+		$query = "INSERT INTO tbl_files (nombre_original, nombre_sistema, ruta, extension, tipo_mime, tamano, fecha_subida, id_folder) 
+                 VALUES ('$nombreOriginalEsc', '$newFileNameEsc', '$rutaRelativaEsc', '$extensionEsc', '$tipoMimeEsc', $tamanoEsc, NOW(), 0)";
 
 		// Ejecutar la consulta
 		if ($servidor->query($query)) {

@@ -38,6 +38,7 @@ body {
 }
 
 .sidebar {
+  background-color: #f7f9fc;
   min-width: 256px;
   height: calc(100vh - 64px);
 }

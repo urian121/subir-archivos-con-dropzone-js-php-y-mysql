@@ -9,8 +9,8 @@
 
             <!-- Drive logo and title (centrado en móvil) -->
             <div class="d-flex align-items-center me-md-4 mx-auto mx-md-0">
-                <a href="./" class="text-decoration-none">
-                    <img src="assets/imgs/logo-edumetrix-drive.png" alt="driver edumetrisc">
+                <a href="<?php echo BASE_HOME; ?>" class="text-decoration-none">
+                    <img src="<?php echo ASSETS_IMG; ?>/logo-edumetrix-drive.png" alt="driver edumetrisc">
                 </a>
             </div>
 
@@ -23,7 +23,7 @@
 
             <!-- Filtro select (visible solo en desktop) -->
             <div class="ms-auto d-none d-md-block px-3">
-                <?php include('components/filtro_select.php'); ?>
+                <?php include(FILTRO_SEARCH); ?>
             </div>
         </div>
 

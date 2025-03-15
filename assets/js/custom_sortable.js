@@ -28,10 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
           .then((response) => response.text())
           .then((html) => {
             // Actualizar el contenedor de archivos después de mover
-            let folderContainer = document.querySelector(
-              `.folder[data-folder='${folderId}'] .connected-list`
-            );
-            folderContainer.innerHTML = html; // Actualizar contenido HTML
+              let folderContainer = document.querySelector(
+                `.folder[data-folder='${folderId}'] .connected-list`
+              );
+              folderContainer.innerHTML = html;            
           })
           .catch((error) => console.error("Error al cargar archivos:", error));
       },

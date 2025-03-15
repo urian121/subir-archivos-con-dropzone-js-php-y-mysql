@@ -29,7 +29,20 @@ define('BASE_STATIC', 'http://' . $_SERVER['SERVER_NAME'] . '/' . NAME_APP . '/'
 
 // Define Rutas Absolutas de Archivos y Directorios
 define('SETTINGS_BD', BASE_PATH . 'settings/settingBD.php');
+
+define('UPLOADS_PATH', BASE_HOME . 'uploads/');
+
 define('ACTION_LOGIN', BASE_HOME . 'functions/action_login.php');
+define('ASSETS_IMG', BASE_HOME . 'assets/imgs');
+define('ASSETS_CSS', BASE_HOME . 'assets/css');
+define('ASSETS_JS', BASE_HOME . 'assets/js');
+define('FUNCTIONS_PATH', BASE_PATH . 'functions/');
+define('FILTRO_SEARCH', BASE_PATH_COMPONENTS . '/filtro_select.php');
+define('DOWNLOADS_FILE', BASE_HOME . 'actions/download_file.php');
+
+// SETTINGS MENU
+define('LINK_ARCHIVOS_COMPARTIDOS', BASE_HOME . 'archivos-compartidos/');
+
 
 
 // -------------------------------

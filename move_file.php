@@ -13,9 +13,9 @@ $query = $servidor->query($queryUpdate);
 
 // Verificar si la actualización fue exitosa
 if ($query) {
-    echo json_encode(["status" => "success", "message" => "Archivo movido exitosamente"]);
+    // echo json_encode(["status" => "success", "message" => "Archivo movido exitosamente"]);
 } else {
-    echo json_encode(["status" => "error", "message" => "Error al mover el archivo"]);
+    // echo json_encode(["status" => "error", "message" => "Error al mover el archivo"]);
 }
 
 mysqli_close($servidor);
