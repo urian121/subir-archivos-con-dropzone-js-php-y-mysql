@@ -34,7 +34,8 @@ $current_page = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']
             <span>Favoritos</span>
         </a>
 
-        <a href="#" class="sidebar-item d-flex align-items-center text-decoration-none mb-1">
+        <a href="<?php echo ARCHIVOS_PAPELERA; ?>" class="sidebar-item d-flex align-items-center text-decoration-none mb-1
+            <?php echo ($current_page == basename(ARCHIVOS_PAPELERA)) ? 'active' : ''; ?>">
             <i class="bi bi-trash me-3"></i>
             <span>Papelera</span>
         </a>

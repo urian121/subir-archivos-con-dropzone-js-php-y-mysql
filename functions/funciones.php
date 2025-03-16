@@ -6,7 +6,10 @@ function obtenerArchivosHome($servidor, $query_search)
             id_drive, nombre_original,
             nombre_sistema, extension,
             ruta FROM tbl_drive_files
-        WHERE activo = 1 AND id_folder = 0 AND nombre_original LIKE '%$query_search%'  ORDER BY id_drive DESC";
+        WHERE activo = 1 AND id_folder = 0
+        AND en_papelera = 0 
+        AND id_folder = 0
+        AND nombre_original LIKE '%$query_search%'  ORDER BY id_drive DESC";
     $resultado = $servidor->query($query);
 
     $archivos = [];
@@ -158,4 +161,18 @@ function obtenerCarpetas($servidor)
         }
     }
     return $carpetas;
+}
+
+// Archivos en papelera
+function obtenerArchivosPapelera($servidor)
+{
+    $archivos = [];
+    $sql = "SELECT * FROM tbl_drive_files WHERE en_papelera = 1 ORDER BY id_drive DESC";
+    $result = $servidor->query($sql);
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $archivos[] = $row;
+        }
+    }
+    return $archivos;
 }

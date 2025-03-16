@@ -42,6 +42,8 @@ define('CREATE_FOLDER', BASE_HOME . 'actions/create_folder.php');
 
 // SETTINGS MENU
 define('LINK_ARCHIVOS_COMPARTIDOS', BASE_HOME . 'archivos-compartidos/');
+define('ARCHIVOS_PAPELERA', BASE_HOME . 'archivos-en-papelera/');
+define('CLEAR_DASH', BASE_HOME . 'actions/clear_dash.php');
 
 
 

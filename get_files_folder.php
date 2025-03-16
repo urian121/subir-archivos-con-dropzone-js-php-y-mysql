@@ -40,7 +40,7 @@ if ($list_files_folder) {
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item eliminar-archivo" onclick="eliminarArchivo('<?php echo $archivo['id_drive']; ?>', '<?php echo $archivo['nombre_original']; ?>')" href="#" data-id="<?php echo $archivo['id_drive']; ?>"
+                            <a class="dropdown-item eliminar-archivo" onclick="sendFileDash('<?php echo $archivo['id_drive']; ?>', '<?php echo $archivo['nombre_original']; ?>')" href="#" data-id="<?php echo $archivo['id_drive']; ?>"
                                 data-nombre="<?php echo htmlspecialchars($archivo['nombre_original']); ?>">
                                 <i class="bi bi-trash"></i>
                                 Eliminar archivo
