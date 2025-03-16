@@ -43,6 +43,7 @@ include_once 'settings/config.php';
 
 		<div class="d-flex">
 			<?php
+			$directorios = obtenerDirectorios($servidor);
 			include(BASE_PATH_COMPONENTS . '/sidebar.php');
 			include(BASE_PATH_COMPONENTS . '/modal_file.php');
 			?>

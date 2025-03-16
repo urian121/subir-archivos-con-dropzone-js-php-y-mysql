@@ -176,3 +176,17 @@ function obtenerArchivosPapelera($servidor)
     }
     return $archivos;
 }
+
+// Lista de directorios
+function obtenerDirectorios($servidor)
+{
+    $directorios = [];
+    $sql = "SELECT * FROM tbl_drive_directorios  WHERE estatus_directorio = 1 ORDER BY posicion_directorio ASC";
+    $result = $servidor->query($sql);
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $directorios[] = $row;
+        }
+    }
+    return $directorios;
+}

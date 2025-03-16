@@ -21,9 +21,9 @@ define('DB_PASSWORD', '');
 // Configuración de las rutas
 // ----------------------------
 define('NAME_APP', 'driver-edumetrics');
-define('BASE_PATH', __DIR__ . '../../'); 
-//define('BASE_HOME', 'https://tecnoescuelagaitan.com/' . NAME_APP . '/');
 define('BASE_HOME', 'http://localhost/' . NAME_APP . '/');
+define('BASE_PATH', __DIR__ . '../../');
+//define('BASE_HOME', 'https://tecnoescuelagaitan.com/' . NAME_APP . '/');
 define('BASE_PATH_COMPONENTS', BASE_PATH . '/components');
 define('BASE_STATIC', 'http://' . $_SERVER['SERVER_NAME'] . '/' . NAME_APP . '/');
 
@@ -41,8 +41,8 @@ define('DOWNLOADS_FILE', BASE_HOME . 'actions/download_file.php');
 define('CREATE_FOLDER', BASE_HOME . 'actions/create_folder.php');
 
 // SETTINGS MENU
-define('LINK_ARCHIVOS_COMPARTIDOS', BASE_HOME . 'archivos-compartidos/');
-define('ARCHIVOS_PAPELERA', BASE_HOME . 'archivos-en-papelera/');
+//define('LINK_ARCHIVOS_COMPARTIDOS', BASE_HOME . 'archivos-compartidos/');
+//define('ARCHIVOS_PAPELERA', BASE_HOME . 'archivos-en-papelera/');
 define('CLEAR_DASH', BASE_HOME . 'actions/clear_dash.php');
 
 
