@@ -1,5 +1,4 @@
 <?php
-sleep(1);
 include('../settings/config.php');
 include('../settings/settingBD.php');
 

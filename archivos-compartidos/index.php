@@ -35,6 +35,7 @@ include_once '../settings/config.php';
 		include(FUNCTIONS_PATH . '/funciones.php');
 		include(BASE_PATH_COMPONENTS . '/header.php');
 		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivoModal.html');
+		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
 
 		?>
@@ -57,22 +58,49 @@ include_once '../settings/config.php';
 	</div>
 
 
-	<script src="<?php echo ASSETS_JS; ?>/jquery-3.7.1.min.js"></script>
-	<script src="<?php echo ASSETS_JS; ?>/popper.min.js"></script>
-	<script src="<?php echo ASSETS_JS; ?>/bootstrap.min.js"></script>
-	<script src="<?php echo ASSETS_JS; ?>/sidebar.js"></script>
+	<?php include(BASE_PATH_COMPONENTS . '/footerJS.php'); ?>
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Hacer los archivos arrastrables
+			new Sortable(document.getElementById("searchResults"), {
+				group: "shared",
+				animation: 150,
+			});
 
-	<script src="<?php echo ASSETS_JS; ?>/axios.min.js"></script>
-	<script src="<?php echo ASSETS_JS; ?>/dropzone.min.js?v=<?php echo mt_rand(); ?>"></script>
-	<script src="<?php echo ASSETS_JS; ?>/custom_dropzone.js?v=<?php echo mt_rand(); ?>"></script>
+			// Hacer las carpetas receptivas a archivos
+			document.querySelectorAll(".connected-list").forEach((folder) => {
+				new Sortable(folder, {
+					group: "shared",
+					animation: 150,
+					onAdd: function(evt) {
+						let fileId = evt.item.getAttribute("data-id");
+						let folderId = evt.to.closest(".folder").getAttribute("data-folder");
 
-	<script src="<?php echo ASSETS_JS; ?>/search_files.js?v=<?php echo mt_rand(); ?>"></script>
-	<script src="<?php echo ASSETS_JS; ?>/fitro_files_extension.js"></script>
-	<script src="<?php echo ASSETS_JS; ?>/eliminar_archivo.js?v=<?php echo mt_rand(); ?>"></script>
-
-	<script src="<?php echo ASSETS_JS; ?>/sortable.min.js?v=<?php echo mt_rand(); ?>"></script>
-	<script src="<?php echo ASSETS_JS; ?>/custom_sortable.js?v=<?php echo mt_rand(); ?>"></script>
-	<script src="<?php echo ASSETS_JS; ?>/open_folder.js?v=<?php echo mt_rand(); ?>"></script>
+						// Enviar datos al backend
+						fetch("move_file.php", {
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+								},
+								body: JSON.stringify({
+									file_id: fileId,
+									folder_id: folderId,
+								}),
+							})
+							.then((response) => response.text())
+							.then((html) => {
+								// Actualizar el contenedor de archivos después de mover
+								let folderContainer = document.querySelector(
+									`.folder[data-folder='${folderId}'] .connected-list`
+								);
+								folderContainer.innerHTML = html;
+							})
+							.catch((error) => console.error("Error al cargar archivos:", error));
+					},
+				});
+			});
+		});
+	</script>
 
 </body>
 

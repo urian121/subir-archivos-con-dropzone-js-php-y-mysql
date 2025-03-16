@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Mostrar el loader
   $("#loader").fadeOut("slow");
+
   // Desactivar el autodescubrimiento
   Dropzone.autoDiscover = false;
 

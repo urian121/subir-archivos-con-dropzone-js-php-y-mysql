@@ -51,14 +51,14 @@ include_once '../settings/config.php';
 			<div class="flex-grow-1 p-4 content-files">
 				<div class="mt-4 mb-4">
 					<?php
-					if(count($list_files) > 0){ ?>
-					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-						<div class="col mb-5">
-							<a href="<?php echo CLEAR_DASH; ?>">
-								<i class="bi bi-trash me-3"></i>
-								Limpiar la papelera</a>
+					if (count($list_files) > 0) { ?>
+						<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+							<div class="col mb-5">
+								<a href="<?php echo CLEAR_DASH; ?>">
+									<i class="bi bi-trash me-3"></i>
+									Limpiar la papelera</a>
+							</div>
 						</div>
-					</div>
 					<?php } ?>
 
 					<div id="searchResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
@@ -71,21 +71,7 @@ include_once '../settings/config.php';
 		</div>
 
 
-		<script src="<?php echo ASSETS_JS; ?>/jquery-3.7.1.min.js"></script>
-		<script src="<?php echo ASSETS_JS; ?>/popper.min.js"></script>
-		<script src="<?php echo ASSETS_JS; ?>/bootstrap.min.js"></script>
-		<script src="<?php echo ASSETS_JS; ?>/sidebar.js"></script>
-
-		<script src="<?php echo ASSETS_JS; ?>/axios.min.js"></script>
-		<script src="<?php echo ASSETS_JS; ?>/dropzone.min.js?v=<?php echo mt_rand(); ?>"></script>
-		<script src="<?php echo ASSETS_JS; ?>/custom_dropzone.js?v=<?php echo mt_rand(); ?>"></script>
-
-		<script src="<?php echo ASSETS_JS; ?>/search_files.js?v=<?php echo mt_rand(); ?>"></script>
-		<script src="<?php echo ASSETS_JS; ?>/fitro_files_extension.js"></script>
-		<script src="<?php echo ASSETS_JS; ?>/send_file_dash.js?v=<?php echo mt_rand(); ?>"></script>
-
-		<script src="<?php echo ASSETS_JS; ?>/sortable.min.js?v=<?php echo mt_rand(); ?>"></script>
-		<script src="<?php echo ASSETS_JS; ?>/open_folder.js?v=<?php echo mt_rand(); ?>"></script>
+		<?php include(BASE_PATH_COMPONENTS . '/footerJS.php'); ?>
 
 		<script>
 			document.addEventListener("DOMContentLoaded", function() {

@@ -11,14 +11,14 @@
                 <form action="#" method="POST" class="dropzone needsclick" id="demo-upload" enctype="multipart/form-data">
                     <div class="dz-message needsclick">
                         <span class="text">
-                            <img src="assets/imgs/uploadsfiles.png" alt="Upload" style="width: 40px;" />
+                            <img src="<?php echo ASSETS_IMG; ?>/uploadsfiles.png" alt="Upload" style="width: 40px;" />
                             <h3 class="opacity-75">Suelta archivos aquí o haga clic para subir.</h3>
                         </span>
                     </div>
                     <div class="modal-footer-upload">
                         <button type="submit" class="btn btn-primary" id="uploadBtn">
                             Subir
-                            <img src="assets/imgs/upload.png" alt="upload" style="width: 20px;">
+                            <img src="<?php echo ASSETS_IMG; ?>/upload.png" alt="upload" style="width: 20px;">
                         </button>
                     </div>
                 </form>
