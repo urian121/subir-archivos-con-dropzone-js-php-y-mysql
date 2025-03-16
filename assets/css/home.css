@@ -1,22 +1,43 @@
-h1{
+h1 {
   width: 100%;
 }
-.folder{
+
+.folder {
+  width: 150px; /* Ancho fijo */
+  height: 150px; /* Alto fijo */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
   border-radius: 10px;
-  background-color: #ebebeb;
+  background-color: #f8f9fa;
+  flex-shrink: 0; /* Evita que se reduzcan en pantallas pequeñas */
 }
 
-.folder:hover{
+.folder h4 {
+  margin: 5px 0;
+  font-size: 18px; /* Tamaño del texto */
+  word-wrap: break-word;
+  max-width: 100%;
+}
+
+.folder .icon {
+  font-size: 50px; /* Tamaño del icono */
+}
+
+.folder:hover {
   cursor: pointer;
   background-color: #c0bfbf;
 }
 
-.active-folder{
+.active-folder {
   background-color: #c0bfbf;
   border: 1px solid #000;
 }
 
-.titulo_modal{
+.titulo_modal {
   text-align: center;
 }
 .dropzone {
@@ -89,10 +110,10 @@ select.custom-select {
 }
 /** fin del custom select */
 
-.bi{
+.bi {
   font-size: 20px;
 }
-.sidebarToggle{
+.sidebarToggle {
   cursor: pointer;
   border: 1px solid #ccc;
   border-radius: 10px;

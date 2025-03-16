@@ -24,6 +24,11 @@ $current_page = basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']
             <span>Archivos compartidos</span>
         </a>
 
+        <a href="#" data-bs-toggle="modal" data-bs-target="#createFolder" class="sidebar-item d-flex align-items-center text-decoration-none mb-1">
+            <i class="bi bi-folder me-3"></i>
+            <span>Crear carpeta</span>
+        </a>
+
         <a href="#" class="sidebar-item d-flex align-items-center text-decoration-none mb-1">
             <i class="bi bi-star me-3"></i>
             <span>Favoritos</span>

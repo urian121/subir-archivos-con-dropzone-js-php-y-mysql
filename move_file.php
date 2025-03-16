@@ -8,7 +8,7 @@ $fileId = $data['file_id'];
 $folderId = $data['folder_id'];
 
 // Actualizar la base de datos, mover el archivo a la nueva carpeta
-$queryUpdate = "UPDATE tbl_files SET id_folder = '$folderId' WHERE id = '$fileId'";
+$queryUpdate = "UPDATE tbl_drive_files SET id_folder = '$folderId' WHERE id_drive = '$fileId'";
 $query = $servidor->query($queryUpdate);
 
 // Verificar si la actualización fue exitosa

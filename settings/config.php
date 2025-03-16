@@ -37,8 +37,8 @@ define('ASSETS_IMG', BASE_HOME . 'assets/imgs');
 define('ASSETS_CSS', BASE_HOME . 'assets/css');
 define('ASSETS_JS', BASE_HOME . 'assets/js');
 define('FUNCTIONS_PATH', BASE_PATH . 'functions/');
-define('FILTRO_SEARCH', BASE_PATH_COMPONENTS . '/filtro_select.php');
 define('DOWNLOADS_FILE', BASE_HOME . 'actions/download_file.php');
+define('CREATE_FOLDER', BASE_HOME . 'actions/create_folder.php');
 
 // SETTINGS MENU
 define('LINK_ARCHIVOS_COMPARTIDOS', BASE_HOME . 'archivos-compartidos/');

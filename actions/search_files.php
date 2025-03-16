@@ -5,11 +5,11 @@ include('../settings/settingBD.php');
 $q = isset($_GET['q']) ? $_GET['q'] : '';
 
 // Obtener archivos
-$query = "SELECT id, nombre_original, nombre_sistema, extension, ruta FROM tbl_files WHERE nombre_original LIKE '%$q%'";
+$query = "SELECT id_drive, nombre_original, nombre_sistema, extension, ruta FROM tbl_drive_files WHERE nombre_original LIKE '%$q%'";
 $resultado_files = mysqli_query($servidor, $query);
 
 // Obtener carpetas (esto depende de cómo almacenas las carpetas en tu BD)
-$query_folders = "SELECT id_folder, nombre_folder FROM tbl_folders";
+$query_folders = "SELECT id_folder, nombre_folder FROM tbl_drive_folders";
 $resultado_folders = mysqli_query($servidor, $query_folders);
 ?>
 
@@ -39,7 +39,7 @@ $resultado_folders = mysqli_query($servidor, $query_folders);
                 $preview = "<i class='bi $icon file-icon'></i>";
             }
     ?>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item" data-id="<?php echo $archivo['id']; ?>">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item" data-id="<?php echo $archivo['id_drive']; ?>">
                 <div class="card h-100">
                     <div class="card-body d-flex flex-column">
                         <div class="file-preview mb-3 d-flex justify-content-center align-items-center" style="height: 130px;">

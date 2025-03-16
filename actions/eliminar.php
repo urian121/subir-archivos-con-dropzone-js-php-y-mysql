@@ -12,14 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $id_archivo = intval($data['id_archivo']);
 
         // Consultar el archivo
-        $query = "SELECT nombre_sistema FROM tbl_files WHERE id = $id_archivo";
+        $query = "SELECT nombre_sistema FROM tbl_drive_files WHERE id_drive = $id_archivo";
         $resultado = $servidor->query($query);
 
         if ($resultado && $archivo = $resultado->fetch_assoc()) {
             $ruta_archivo = "uploads/" . $archivo['nombre_sistema'];
 
             // Eliminar el archivo de la base de datos
-            $query_eliminar = "DELETE FROM tbl_files WHERE id = $id_archivo";
+            $query_eliminar = "DELETE FROM tbl_drive_files WHERE id_drive = $id_archivo";
             if ($servidor->query($query_eliminar)) {
                 // Intentar eliminar el archivo físico
                 $mensaje = (file_exists($ruta_archivo) && unlink($ruta_archivo))

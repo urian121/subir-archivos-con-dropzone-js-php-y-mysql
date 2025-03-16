@@ -3,10 +3,10 @@ function obtenerArchivosHome($servidor, $query_search)
 {
     // Construir la consulta base
     $query = "SELECT 
-            id, nombre_original,
+            id_drive, nombre_original,
             nombre_sistema, extension,
-            ruta FROM tbl_files
-        WHERE activo = 1 AND id_folder = 0 AND nombre_original LIKE '%$query_search%'  ORDER BY id DESC";
+            ruta FROM tbl_drive_files
+        WHERE activo = 1 AND id_folder = 0 AND nombre_original LIKE '%$query_search%'  ORDER BY id_drive DESC";
     $resultado = $servidor->query($query);
 
     $archivos = [];
@@ -21,10 +21,10 @@ function obtenerArchivosCompartidos($servidor, $query_search)
 {
     // Construir la consulta base
     $query = "SELECT 
-            id, nombre_original,
+            id_drive, nombre_original,
             nombre_sistema, extension,
-            ruta FROM tbl_files
-        WHERE activo = 1 AND  shared_files=1 AND  nombre_original LIKE '%$query_search%'  ORDER BY id DESC";
+            ruta FROM tbl_drive_files
+        WHERE activo = 1 AND  shared_files=1 AND  nombre_original LIKE '%$query_search%'  ORDER BY id_drive DESC";
     $resultado = $servidor->query($query);
     $archivos = [];
     while ($archivo = $resultado->fetch_assoc()) {
@@ -36,7 +36,7 @@ function obtenerArchivosCompartidos($servidor, $query_search)
 
 function archivosPorExtension($servidor)
 {
-    $query = "SELECT extension FROM tbl_files WHERE activo = 1 GROUP BY extension";
+    $query = "SELECT extension FROM tbl_drive_files WHERE activo = 1 GROUP BY extension";
     $resultado = $servidor->query($query);
 
     if (!$resultado) {
@@ -78,7 +78,7 @@ function obtenerIcono($extension)
 function obtenerArchivosPorCarpeta($servidor, $folderId)
 {
     $folderId = trim($folderId);
-    $query = "SELECT * FROM tbl_files WHERE id_folder = '$folderId'";
+    $query = "SELECT * FROM tbl_drive_files WHERE id_folder = '$folderId'";
     $result = mysqli_query($servidor, $query);
 
     // Crear un array para almacenar los archivos
@@ -144,4 +144,18 @@ function getPerfil($servidor, $id_user)
         $row = $result->fetch_assoc();
     }
     return $row;
+}
+
+// lista de carpetas
+function obtenerCarpetas($servidor)
+{
+    $carpetas = [];
+    $sql = "SELECT * FROM tbl_drive_folders WHERE estatus_folder = 1 ORDER BY id_folder DESC";
+    $result = $servidor->query($sql);
+    if ($result && $result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $carpetas[] = $row;
+        }
+    }
+    return $carpetas;
 }

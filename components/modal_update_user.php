@@ -10,15 +10,15 @@
             <div class="modal-body">
                 <form method="POST" action="<?= ACTION_LOGIN ?>" autocomplete="off" class="pt-3">
                     <input type="text" name="action" value="update_user" hidden class="form-control">
-                    <input type="text" name="id_user" value="<?= $detallesPerfil['id_user'] ?>" hidden class="form-control">
+                    <input type="text" name="id_user" value="<?= $detallesPerfil['id_user'] ?>" hidden class="form-control" autocomplete="off" required>
 
                     <div class="mb-3">
                         <label for="name_user" class="form-label">Nombre y Apellido</label>
-                        <input type="text" name="name_user" value="<?= $detallesPerfil['name_user'] ?>" class="form-control" autocomplete="off">
+                        <input type="text" name="name_user" value="<?= $detallesPerfil['name_user'] ?>" class="form-control" autocomplete="off" required>
                     </div>
                     <div class="mb-3">
                         <label for="email_user" class="form-label">Correo electr&oacute;nico</label>
-                        <input type="email" name="email_user" value="<?= $detallesPerfil['email_user'] ?>" class="form-control" autocomplete="off">
+                        <input type="email" name="email_user" value="<?= $detallesPerfil['email_user'] ?>" class="form-control" autocomplete="off" required>
                     </div>
                     <div class="mb-3">
                         <label for="password_user" class="form-label">Clave</label>

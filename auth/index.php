@@ -20,7 +20,7 @@ include_once '../settings/config.php'; // obtener parametros de configuracion
 </head>
 
 <body>
-    <div class="login-card">
+    <div class="login-card" id="loginDefault">
         <div class="brand">
             <img class="brand-logo" src="../assets/imgs/logo-edumetrix-drive.png" alt="logo">
             <h1>Iniciar sesión en EduDrive</h1>
@@ -37,9 +37,36 @@ include_once '../settings/config.php'; // obtener parametros de configuracion
                 <label for="password">Clave</label>
                 <input type="password" name="password_user" autocomplete="off" required>
             </div>
-
+            <!--
             <div class="remember-forgot">
                 <a href="#" class="forgot-password">Has olvidado tu contraseña?</a>
+            </div>
+            -->
+            <button type="submit" class="login-btn" id="loginButton">
+                Iniciar sesión
+            </button>
+        </form>
+        <div class="signup-link">
+            <p>Sí eres un estudiante, <a href="#" id="loginEstudiante">Iniciar sesión aquí</a></p>
+        </div>
+        <!---
+        <div class="signup-link">
+            <p>No tienes una cuenta? <a href="#">Registrarse</a></p>
+        </div>
+        -->
+    </div>
+
+    <div class="login-card d-none" id="loginEstudianteForm" style="display: none;">
+        <div class="brand">
+            <img class="brand-logo" src="../assets/imgs/logo-edumetrix-drive.png" alt="logo">
+            <h1>Iniciar sesión como estudiante</h1>
+        </div>
+
+        <form action="<?= ACTION_LOGIN ?>" autocomplete="off" id="loginForm" method="POST">
+            <input type="text" name="action" value="login_estudiante" hidden>
+            <div class="form-group">
+                <label for="password">Clave</label>
+                <input type="password" name="password_user" autocomplete="off" required>
             </div>
 
             <button type="submit" class="login-btn" id="loginButton">
@@ -47,13 +74,32 @@ include_once '../settings/config.php'; // obtener parametros de configuracion
             </button>
         </form>
 
-        <div class="signup-link">
-            <p>Sí eres un estudiante, <a href="#">Iniciar sesión aquí</a></p>
+        <div class="signup-link d-flex justify-content-center">
+            <a href="#" id="volverLoginDefault" class="btn-back d-flex align-items-center text-decoration-none">
+                <img src="../assets/imgs/back.png" alt="Atrás">
+                <span>Volver</span>
+            </a>
         </div>
-        <div class="signup-link">
-            <p>No tienes una cuenta? <a href="#">Registrarse</a></p>
-        </div>
+
+
+
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("loginEstudiante").addEventListener("click", toggleForms);
+            document.getElementById("volverLoginDefault").addEventListener("click", toggleForms);
+        });
+
+        function toggleForms(event) {
+            event.preventDefault();
+            let loginDefault = document.getElementById("loginDefault");
+            let loginEstudiante = document.getElementById("loginEstudianteForm");
+
+            loginDefault.style.display = loginDefault.style.display === "none" ? "block" : "none";
+            loginEstudiante.style.display = loginEstudiante.style.display === "none" ? "block" : "none";
+        }
+    </script>
 </body>
 
 </html>

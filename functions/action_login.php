@@ -1,4 +1,7 @@
 <?php
+date_default_timezone_set("America/Bogota");
+$sesion_desde_user   = date("Y-m-d H:i:A");
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include_once('../settings/config.php');
     include_once(SETTINGS_BD);
@@ -7,15 +10,49 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = $_POST['action'] ?? null;
 
     if ($_POST["action"] == "login_user") {
-        date_default_timezone_set("America/Bogota");
-        $sesion_desde_user   = date("Y-m-d H:i:A");
-
         $email = filter_var($_REQUEST['email_user'], FILTER_SANITIZE_EMAIL);
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $email_user     = ($_REQUEST['email_user']);
         }
 
         // Sanitizar y validar la contraseña
+        $password_user = trim($_POST['password_user']);
+        if (empty($password_user)) {
+            header("Location: " . BASE_HOME . '?b=2');
+            exit();
+        }
+
+
+        $sqlVerificandoLogin = ("SELECT 
+                id_user, name_user,
+                email_user, password_user
+            FROM $table 
+            WHERE email_user 
+            COLLATE utf8_bin='$email_user' AND estatus_user=1");
+        $query = $servidor->query($sqlVerificandoLogin);
+        if ($query->num_rows > 0) {
+            while ($rowData  = mysqli_fetch_assoc($query)) {
+                $passwordBD = $rowData['password_user'];
+
+                if (password_verify($password_user, $passwordBD)) {
+                    session_start();
+                    $_SESSION['id_user']     = $rowData['id_user'];
+                    $_SESSION['name_user']   = $rowData['name_user'];
+                    $_SESSION['email_user']  = $rowData['email_user'];
+                    $Update = ("UPDATE $table SET sesion_desde_user='$sesion_desde_user' WHERE email_user='$email_user'");
+                    $servidor->query($Update) or die("Error al actualizar:" . mysqli_error($servidor));
+                    header("Location: " . BASE_HOME . '?welcome=1');
+                    exit();
+                } else {
+                    header("Location: " . BASE_HOME . '?b=1');  // Contraseña incorrecta
+                    exit();
+                }
+            }
+        } else {
+            header("Location: " . BASE_HOME . '?b=1'); // Usuario no encontrado o inactivo
+            exit();
+        }
+    } elseif ($action == "login_estudiante") {
         $password_user = trim($_POST['password_user']);
         if (empty($password_user)) {
             header("Location: " . BASE_HOME . '?b=2');

@@ -145,3 +145,24 @@ body {
 .shake {
   animation: shake 0.5s ease;
 }
+
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px; /* Espacio entre imagen y texto */
+    padding: 6px 12px; /* Espaciado interno */
+    background-color: #dcdfe1; /* Color de fondo claro */
+    border-radius: 5px; /* Esquinas redondeadas */
+    font-size: 14px;
+    color: #333;
+    transition: background 0.3s ease;
+}
+.btn-back img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain; /* Evita distorsión */
+}
+.btn-back:hover {
+    background-color: #cbcccc; /* Cambio de color al pasar el mouse */
+}

@@ -34,10 +34,11 @@ include_once 'settings/config.php';
 		include_once(SETTINGS_BD);
 		include(FUNCTIONS_PATH . '/funciones.php');
 		$archivos_por_extensiones = archivosPorExtension($servidor);
+
 		include(BASE_PATH_COMPONENTS . '/header.php');
 		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivoModal.html');
+		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
-
 		?>
 
 		<div class="d-flex">
@@ -46,29 +47,28 @@ include_once 'settings/config.php';
 			include(BASE_PATH_COMPONENTS . '/modal_file.php');
 			?>
 
+
 			<div class="flex-grow-1 p-4 content-files">
-				<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
-					<div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+				<div class="mt-4 mb-4">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
 						<?php
-						// Obtener carpetas (esto depende de cómo almacenas las carpetas en tu BD)
-						$query_folders = "SELECT id_folder, nombre_folder FROM tbl_folders";
-						$resultado_folders = mysqli_query($servidor, $query_folders);
+						$lista_carpetas  = obtenerCarpetas($servidor);
+						if ($lista_carpetas && count($lista_carpetas) > 0) {
+							foreach ($lista_carpetas as $folder) { ?>
+								<div class="col">
+									<div class="folder border p-3 d-flex flex-column align-items-center text-center connected-list" data-folder="<?php echo $folder['id_folder']; ?>">
+										<h4 class="icon" style="font-size: 50px;">📁</h4>
+										<h4 class="folder-name" style="font-size: 16px; word-wrap: break-word;"><?php echo $folder['nombre_folder']; ?></h4>
+									</div>
+								</div>
+						<?php }
+						} else {
+							echo '<div class="col text-center fw-bold">No hay carpetas</div>';
+						}
 						?>
-						<div class="mt-4 mb-4">
-							<div class="d-flex gap-3">
-								<?php if ($resultado_folders) {
-									foreach ($resultado_folders as $folder) { ?>
-										<div class="folder border p-3" data-folder="<?php echo $folder['id_folder']; ?>">
-											<h4>📁</h4>
-											<h4><?php echo $folder['nombre_folder']; ?></h4>
-											<ul class="list-group connected-list"></ul>
-										</div>
-								<?php }
-								} ?>
-							</div>
-						</div>
 					</div>
 				</div>
+
 
 				<div id="searchResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
 					<?php
@@ -95,8 +95,50 @@ include_once 'settings/config.php';
 	<script src="<?php echo ASSETS_JS; ?>/eliminar_archivo.js?v=<?php echo mt_rand(); ?>"></script>
 
 	<script src="<?php echo ASSETS_JS; ?>/sortable.min.js?v=<?php echo mt_rand(); ?>"></script>
-	<script src="<?php echo ASSETS_JS; ?>/custom_sortable.js?v=<?php echo mt_rand(); ?>"></script>
 	<script src="<?php echo ASSETS_JS; ?>/open_folder.js?v=<?php echo mt_rand(); ?>"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			// Hacer los archivos arrastrables
+			new Sortable(document.getElementById("searchResults"), {
+				group: "shared",
+				animation: 150,
+			});
+
+			// Hacer las carpetas receptivas a archivos
+			document.querySelectorAll(".connected-list").forEach((folder) => {
+				new Sortable(folder, {
+					group: "shared",
+					animation: 150,
+					onAdd: function(evt) {
+						let fileId = evt.item.getAttribute("data-id");
+						let folderId = evt.to.closest(".folder").getAttribute("data-folder");
+
+						// Enviar datos al backend
+						fetch("move_file.php", {
+								method: "POST",
+								headers: {
+									"Content-Type": "application/json",
+								},
+								body: JSON.stringify({
+									file_id: fileId,
+									folder_id: folderId,
+								}),
+							})
+							.then((response) => response.text())
+							.then((html) => {
+								// Actualizar el contenedor de archivos después de mover
+								let folderContainer = document.querySelector(
+									`.folder[data-folder='${folderId}'] .connected-list`
+								);
+								folderContainer.innerHTML = html;
+							})
+							.catch((error) => console.error("Error al cargar archivos:", error));
+					},
+				});
+			});
+		});
+	</script>
 
 </body>
 

@@ -12,14 +12,14 @@ if ($list_files) {
             $icon = obtenerIconoArchivo($extension);
             $preview = "<i class='bi $icon file-icon'></i>";
         } ?>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item" data-id="<?php echo $archivo['id']; ?>">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item" data-id="<?php echo $archivo['id_drive']; ?>">
             <div class="card h-100">
                 <div class="dropdown">
-                    <button class="btn file-menu p-0" type="button" id="fileMenu<?php echo $archivo['id']; ?>"
+                    <button class="btn file-menu p-0" type="button" id="fileMenu<?php echo $archivo['id_drive']; ?>"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="bi bi-three-dots-vertical"></i>
                     </button>
-                    <ul class="dropdown-menu" aria-labelledby="fileMenu<?php echo $archivo['id']; ?>">
+                    <ul class="dropdown-menu" aria-labelledby="fileMenu<?php echo $archivo['id_drive']; ?>">
                         <li>
                             <a class="dropdown-item" href="<?php echo UPLOADS_PATH . $archivo['nombre_sistema']; ?>" target="_blank"><i
                                     class="bi bi-box-arrow-up-right"></i>
@@ -28,12 +28,12 @@ if ($list_files) {
                         </li>
                         <li>
                             <a class="dropdown-item" download="<?php echo $archivo['nombre_sistema']; ?>"
-                                href="<?php echo DOWNLOADS_FILE; ?>?id=<?php echo $archivo['id']; ?>"><i class="bi bi-download"></i>
+                                href="<?php echo DOWNLOADS_FILE; ?>?id=<?php echo $archivo['id_drive']; ?>"><i class="bi bi-download"></i>
                                 Descargar
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item eliminar-archivo" onclick="eliminarArchivo('<?php echo $archivo['id']; ?>', '<?php echo $archivo['nombre_original']; ?>')" href="#" data-id="<?php echo $archivo['id']; ?>"
+                            <a class="dropdown-item eliminar-archivo" onclick="eliminarArchivo('<?php echo $archivo['id_drive']; ?>', '<?php echo $archivo['nombre_original']; ?>')" href="#" data-id="<?php echo $archivo['id_drive']; ?>"
                                 data-nombre="<?php echo htmlspecialchars($archivo['nombre_original']); ?>"><i
                                     class="bi bi-trash"></i>
                                 Eliminar archivo
