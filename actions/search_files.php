@@ -39,7 +39,7 @@ $resultado_folders = mysqli_query($servidor, $query_folders);
                 $preview = "<i class='bi $icon file-icon'></i>";
             }
     ?>
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item" data-id="<?php echo $archivo['id_drive']; ?>">
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item mb-3" data-id="<?php echo $archivo['id_drive']; ?>">
                 <div class="card h-100">
                     <div class="card-body d-flex flex-column">
                         <div class="file-preview mb-3 d-flex justify-content-center align-items-center" style="height: 130px;">

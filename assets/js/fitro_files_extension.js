@@ -9,7 +9,8 @@ selectedExtension?.addEventListener("change", () => {
 
   fileContainer.innerHTML = "";
 
-  fetch(`actions/files_extension.php?extension=${selectedExtensionValue}`)
+  let paramts = `actions/files_extension.php?extension=${selectedExtensionValue}`;
+  fetch(`${ruta_base}${paramts}`)
     .then((response) => response.text())
     .then((html) => (fileContainer.innerHTML = html))
     .catch((error) => console.error("Error:", error))

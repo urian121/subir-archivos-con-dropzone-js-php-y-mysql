@@ -12,7 +12,7 @@ if ($list_files) {
             $icon = obtenerIconoArchivo($extension);
             $preview = "<i class='bi $icon file-icon'></i>";
         } ?>
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item" data-id="<?php echo $archivo['id_drive']; ?>">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 file-item mb-3" data-id="<?php echo $archivo['id_drive']; ?>">
             <div class="card h-100">
                 <div class="dropdown">
                     <button class="btn file-menu p-0" type="button" id="fileMenu<?php echo $archivo['id_drive']; ?>"

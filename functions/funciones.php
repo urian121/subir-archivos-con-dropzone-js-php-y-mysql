@@ -25,9 +25,15 @@ function obtenerArchivosCompartidos($servidor, $id_directorio, $query_search)
     return $archivos;
 }
 
-function archivosPorExtension($servidor)
+/**
+ * Funcion para obtener las extensiones de los archivos de un directorio en especifico
+ */
+function archivosPorExtensionYDirectorio($servidor, $id_directorio)
 {
-    $query = "SELECT extension FROM tbl_drive_files WHERE activo = 1 GROUP BY extension";
+    $query = "SELECT extension FROM tbl_drive_files 
+        WHERE activo = 1
+        AND id_directorio = '$id_directorio' GROUP BY extension";
+    //print_r($query);
     $resultado = $servidor->query($query);
 
     if (!$resultado) {

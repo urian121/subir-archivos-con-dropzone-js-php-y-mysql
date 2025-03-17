@@ -35,9 +35,10 @@ include_once '../settings/config.php';
 
 	<div class="container-fluid p-0">
 		<?php
+		$id_directorio = $_SESSION['id_directorio'] ?? 1;
 		include_once(SETTINGS_BD);
 		include(FUNCTIONS_PATH . '/funciones.php');
-		$archivos_por_extensiones = archivosPorExtension($servidor);
+		$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $id_directorio);
 		include(BASE_PATH_COMPONENTS . '/header.php');
 		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivoModal.html');
 		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
@@ -95,7 +96,7 @@ include_once '../settings/config.php';
 						}
 
 						// Enviar datos al backend
-						fetch("../actions/move_file.php", {
+						fetch(`${ruta_base}actions/move_file.php`, {
 								method: "POST",
 								headers: {
 									"Content-Type": "application/json",

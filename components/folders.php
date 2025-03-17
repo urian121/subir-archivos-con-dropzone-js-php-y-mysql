@@ -1,7 +1,5 @@
 <?php
-$id_directorio = $_SESSION['id_directorio'] ?? null;
 $carpetasPorDirectorio = $id_directorio ? obtenerCarpetasPorDirectorio($servidor, $id_directorio) : [];
-
 if (!empty($carpetasPorDirectorio)):
     foreach ($carpetasPorDirectorio as $folder): ?>
         <div class="folder border p-3 mx-4 d-flex flex-column align-items-center text-center connected-list mb-3"
