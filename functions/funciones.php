@@ -149,19 +149,6 @@ function getPerfil($servidor, $id_user)
     return $row;
 }
 
-// lista de carpetas
-function obtenerCarpetas($servidor)
-{
-    $carpetas = [];
-    $sql = "SELECT * FROM tbl_drive_folders WHERE estatus_folder = 1 ORDER BY id_folder DESC";
-    $result = $servidor->query($sql);
-    if ($result && $result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $carpetas[] = $row;
-        }
-    }
-    return $carpetas;
-}
 
 // Archivos en papelera
 function obtenerArchivosPapelera($servidor)
@@ -189,4 +176,20 @@ function obtenerDirectorios($servidor)
         }
     }
     return $directorios;
+}
+
+// Funcion para obtener carpetas por directorio
+function obtenerCarpetasPorDirectorio($servidor, $id_folder)
+{
+    $carpetas = [];
+    $sql = "SELECT * FROM tbl_drive_folders  WHERE estatus_folder = 1 AND id_directorio ='$id_folder ' ORDER BY id_folder DESC";
+    $resultado = mysqli_query($servidor, $sql);
+
+    if ($resultado) {
+        while ($fila = mysqli_fetch_assoc($resultado)) {
+            $carpetas[] = $fila;
+        }
+    }
+
+    return $carpetas;
 }

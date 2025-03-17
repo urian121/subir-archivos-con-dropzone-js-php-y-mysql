@@ -41,10 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['email_user']  = $rowData['email_user'];
                     $Update = ("UPDATE $table SET sesion_desde_user='$sesion_desde_user' WHERE email_user='$email_user'");
                     $servidor->query($Update) or die("Error al actualizar:" . mysqli_error($servidor));
-                    header("Location: " . BASE_HOME . '?welcome=1');
+                    header("Location: " . BASE_HOME . 'index.php?welcome=1');
                     exit();
                 } else {
-                    header("Location: " . BASE_HOME . '?b=1');  // Contraseña incorrecta
+                    header("Location: " . BASE_HOME . 'index.php?b=1');  // Contraseña incorrecta
                     exit();
                 }
             }
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['email_user']  = $rowData['email_user'];
                     $Update = ("UPDATE $table SET sesion_desde_user='$sesion_desde_user' WHERE email_user='$email_user'");
                     $servidor->query($Update) or die("Error al actualizar:" . mysqli_error($servidor));
-                    header("Location: " . BASE_HOME . '?welcome=1');
+                    header("Location: " . BASE_HOME . 'index.php?welcome=1');
                     exit();
                 } else {
                     header("Location: " . BASE_HOME . '?b=1');  // Contraseña incorrecta

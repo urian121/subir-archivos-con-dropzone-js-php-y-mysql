@@ -48,24 +48,11 @@ include_once 'settings/config.php';
 			include(BASE_PATH_COMPONENTS . '/modal_file.php');
 			?>
 
-
 			<div class="flex-grow-1 p-4 content-files">
 				<div class="mt-4 mb-4">
-					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
 						<?php
-						$lista_carpetas  = obtenerCarpetas($servidor);
-						if ($lista_carpetas && count($lista_carpetas) > 0) {
-							foreach ($lista_carpetas as $folder) { ?>
-								<div class="col">
-									<div class="folder border p-3 d-flex flex-column align-items-center text-center connected-list" data-folder="<?php echo $folder['id_folder']; ?>">
-										<h4 class="icon" style="font-size: 50px;">📁</h4>
-										<h4 class="folder-name" style="font-size: 16px; word-wrap: break-word;"><?php echo $folder['nombre_folder']; ?></h4>
-									</div>
-								</div>
-						<?php }
-						} else {
-							echo '<div class="col text-center fw-bold">No hay carpetas</div>';
-						}
+						include(BASE_PATH_COMPONENTS . '/folders.php');
 						?>
 					</div>
 				</div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 16-03-2025 a las 19:32:00
+-- Tiempo de generación: 17-03-2025 a las 02:10:06
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -78,7 +78,7 @@ CREATE TABLE `tbl_drive_files` (
 INSERT INTO `tbl_drive_files` (`id_drive`, `nombre_original`, `nombre_sistema`, `ruta`, `extension`, `tipo_mime`, `tamano`, `fecha_subida`, `id_usuario`, `activo`, `shared_files`, `en_papelera`, `id_folder`) VALUES
 (9, 'vegeta 1.jpg', '1742137682_9862.jpg', 'uploads/1742137682_9862.jpg', 'jpg', 'image/jpeg', 11416, '2025-03-16 10:08:02', NULL, 1, 0, 0, 1),
 (11, '1741872558_6450.tar', '1742137777_5035.tar', 'uploads/1742137777_5035.tar', 'tar', 'application/x-tar', 221696, '2025-03-16 10:09:37', NULL, 1, 0, 0, 2),
-(12, 'b434341477aeca6f20c76f621950d8e9 - copia.jpg', '1742137777_4430.jpg', 'uploads/1742137777_4430.jpg', 'jpg', 'image/jpeg', 119345, '2025-03-16 10:09:37', NULL, 1, 0, 0, 0);
+(12, 'b434341477aeca6f20c76f621950d8e9 - copia.jpg', '1742137777_4430.jpg', 'uploads/1742137777_4430.jpg', 'jpg', 'image/jpeg', 119345, '2025-03-16 10:09:37', NULL, 1, 0, 0, 6);
 
 -- --------------------------------------------------------
 
@@ -92,17 +92,21 @@ CREATE TABLE `tbl_drive_folders` (
   `created_by` int DEFAULT NULL,
   `created_folder` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `estatus_folder` tinyint(1) DEFAULT '1',
-  `id_parent_folder` int UNSIGNED DEFAULT NULL COMMENT 'directorio al que pertenece la carpeta (si es una carpeta raíz o no)'
+  `id_directorio` int UNSIGNED NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `tbl_drive_folders`
 --
 
-INSERT INTO `tbl_drive_folders` (`id_folder`, `nombre_folder`, `created_by`, `created_folder`, `estatus_folder`, `id_parent_folder`) VALUES
-(1, 'carpeta 1', 3, '2025-03-16 12:04:21', 1, NULL),
-(2, 'Carpeta 2', 3, '2025-03-16 12:04:32', 1, NULL),
-(3, 'Carpeta 3', 3, '2025-03-16 12:04:41', 1, NULL);
+INSERT INTO `tbl_drive_folders` (`id_folder`, `nombre_folder`, `created_by`, `created_folder`, `estatus_folder`, `id_directorio`) VALUES
+(1, 'nueva', 3, '2025-03-16 20:51:56', 1, 2),
+(2, 'papelera', 3, '2025-03-16 20:53:12', 1, 4),
+(3, 'segunda', 3, '2025-03-16 20:56:41', 1, 2),
+(4, 'mis-archivos', 3, '2025-03-16 20:57:47', 1, 1),
+(5, 'tercera', 3, '2025-03-16 21:01:53', 1, 2),
+(6, 'folder-1', 3, '2025-03-16 21:02:18', 1, 1),
+(7, '4 carpeta', 3, '2025-03-16 21:05:18', 1, 2);
 
 -- --------------------------------------------------------
 
@@ -127,7 +131,7 @@ CREATE TABLE `tbl_users` (
 
 INSERT INTO `tbl_users` (`id_user`, `email_user`, `password_user`, `name_user`, `create_user`, `estatus_user`, `sesion_desde_user`, `sesion_hasta_user`) VALUES
 (2, 'abelardo@gmail.com', '$2y$10$P6xmGncFmN3/6itQxpTlceH8WmdSyPQiFZV52puWuGi.bI4Nu2Leu', 'Urian', '2024-11-07 15:47:51', 1, NULL, NULL),
-(3, 'dev@gmail.com', '$2y$10$iGX2nmHHYXuxUccXg7jlH.7RXeq3Yr4iy0voTpXR.nBKKP.fRZABK', 'Urian Viera', '2024-11-07 15:48:34', 1, '2025-03-16 13:15:PM', NULL);
+(3, 'dev@gmail.com', '$2y$10$iGX2nmHHYXuxUccXg7jlH.7RXeq3Yr4iy0voTpXR.nBKKP.fRZABK', 'Urian Viera', '2024-11-07 15:48:34', 1, '2025-03-16 20:28:PM', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -152,8 +156,7 @@ ALTER TABLE `tbl_drive_files`
 -- Indices de la tabla `tbl_drive_folders`
 --
 ALTER TABLE `tbl_drive_folders`
-  ADD PRIMARY KEY (`id_folder`),
-  ADD KEY `id_parent_folder` (`id_parent_folder`);
+  ADD PRIMARY KEY (`id_folder`);
 
 --
 -- Indices de la tabla `tbl_users`
@@ -181,23 +184,13 @@ ALTER TABLE `tbl_drive_files`
 -- AUTO_INCREMENT de la tabla `tbl_drive_folders`
 --
 ALTER TABLE `tbl_drive_folders`
-  MODIFY `id_folder` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_folder` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `tbl_users`
 --
 ALTER TABLE `tbl_users`
   MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `tbl_drive_folders`
---
-ALTER TABLE `tbl_drive_folders`
-  ADD CONSTRAINT `tbl_drive_folders_ibfk_1` FOREIGN KEY (`id_parent_folder`) REFERENCES `tbl_drive_folders` (`id_folder`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -37,17 +37,24 @@ include_once '../settings/config.php';
 		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivoModal.html');
 		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
-
 		?>
 
 		<div class="d-flex">
 			<?php
-	$directorios = obtenerDirectorios($servidor);
+			$directorios = obtenerDirectorios($servidor);
 			include(BASE_PATH_COMPONENTS . '/sidebar.php');
 			include(BASE_PATH_COMPONENTS . '/modal_file.php');
 			?>
 
 			<div class="flex-grow-1 p-4 content-files">
+				<div class="mt-4 mb-4">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
+						<?php
+						include(BASE_PATH_COMPONENTS . '/folders.php');
+						?>
+					</div>
+				</div>
+
 				<div id="searchResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
 					<?php
 					$list_files = obtenerArchivosCompartidos($servidor, $query_search = '');

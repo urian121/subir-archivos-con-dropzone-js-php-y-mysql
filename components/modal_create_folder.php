@@ -7,10 +7,12 @@
             </div>
             <div class="modal-body">
                 <form method="POST" action="<?= CREATE_FOLDER ?>" autocomplete="off" class="pt-3">
-                    <input type="text" name="created_by" value="<?php echo $infUser['id']; ?>" hidden class="form-control">
+                    <input type="hidden" name="created_by" value="<?php echo $infUser['id']; ?>" class="form-control">
+                    <input type="hidden" name="id_directorio" id="id_directorio" value="">
+
                     <div class="mb-3">
                         <label for="nombre_folder" class="form-label">Nombre de la carpeta</label>
-                        <input type="text" name="nombre_folder" class="form-control" autocomplete="off" required>
+                        <input type="text" name="nombre_folder" id="nombre_folder" class="form-control" autofocus="on" required>
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Crear carpeta</button>
