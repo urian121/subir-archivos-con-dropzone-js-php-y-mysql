@@ -34,16 +34,16 @@ if ($resultado) {
 if (!empty($archivos_a_eliminar)) {
     $query_eliminar = "DELETE FROM tbl_drive_files WHERE en_papelera = '$en_papelera'";
     if ($servidor->query($query_eliminar)) {
-        header("location:../archivos-en-papelera/");
+        header("Location: " . $_SERVER['HTTP_REFERER']);
         exit;
     } else {
         //echo "Error al eliminar registros de la base de datos: " . $servidor->error;
-        header("location:../");
+        header("Location: " . $_SERVER['HTTP_REFERER']);
        exit;
     }
 } else {
     // echo 'no hay archivos para eliminar';
-   header("location:../");
+    header("Location: " . $_SERVER['HTTP_REFERER']);
    exit;
 }
 $servidor->close();

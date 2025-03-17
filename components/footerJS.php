@@ -14,3 +14,7 @@
 	<script src="<?php echo ASSETS_JS; ?>/sortable.min.js?v=<?php echo mt_rand(); ?>"></script>
 	<script src="<?php echo ASSETS_JS; ?>/open_folder.js?v=<?php echo mt_rand(); ?>"></script>
 	<script src="<?php echo ASSETS_JS; ?>/validaciones.js?v=<?php echo mt_rand(); ?>"></script>
+
+	<script>
+		let ruta_base = window.location.origin + "/driver-edumetrics/";
+	</script>

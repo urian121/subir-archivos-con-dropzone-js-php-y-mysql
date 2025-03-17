@@ -51,9 +51,11 @@ if ($list_files) {
                 </div>
             </div>
         </div>
-<?php
+    <?php
     }
-} else {
-    echo "<p class='text-danger text-center'>No se encontraron archivos.</p>";
-}
+} else { ?>
+
+    <p class="text-center" style="width: 100%;">No hay archivos 📄</p>
+
+<?php }
 ?>

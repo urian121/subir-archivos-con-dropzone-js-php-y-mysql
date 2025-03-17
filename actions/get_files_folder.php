@@ -61,6 +61,6 @@ if ($list_files_folder) {
 <?php
     }
 } else {
-    echo "<p class='text-danger text-center'>No se encontraron archivos.</p>";
+    echo "<p class='text-danger text-center'>No se encontraron archivos 😥.</p>";
 }
 ?>

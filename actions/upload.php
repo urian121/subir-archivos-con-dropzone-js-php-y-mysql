@@ -22,7 +22,7 @@ if (!empty($_FILES)) {
 	$tamano = $_FILES['file']['size'];
 	$id_usuario = trim($_POST['id_usuario']);
 	$id_folder_seleccionado = trim($_POST['id_folder_seleccionado']);
-	$id_directorio_seleccionado = trim($_POST['id_directorio_seleccionado']);
+	$id_directorio_seleccionado = trim($_POST['id_directorio_seleccionado']) ?? 1;
 
 	// Generar un nombre único basado en timestamp y un número aleatorio
 	$newFileName = time() . '_' . mt_rand(1000, 9999) . '.' . $extension;

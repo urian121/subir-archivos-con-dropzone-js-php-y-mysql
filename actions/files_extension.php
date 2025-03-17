@@ -100,5 +100,5 @@ if ($result_files_extension) {
 
 <?php }
 } else {
-    echo "<p class='text-danger text-center'>No se encontraron archivos.</p>";
+    echo "<p class='text-danger text-center'>No se encontrarón archivos.</p>";
 } ?>

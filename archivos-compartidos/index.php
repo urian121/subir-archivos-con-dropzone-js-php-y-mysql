@@ -53,14 +53,14 @@ include_once '../settings/config.php';
 
 			<div class="flex-grow-1 p-4 content-files">
 				<div class="mt-4 mb-4">
-					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-3">
+					<div class="row">
 						<?php
 						include(BASE_PATH_COMPONENTS . '/folders.php');
 						?>
 					</div>
 				</div>
 
-				<div id="searchResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+				<div id="searchResults" class="row">
 					<?php
 					$list_files = obtenerArchivosCompartidos($servidor, $id_directorio, $query_search = '');
 					include(BASE_PATH_COMPONENTS . '/files.php');

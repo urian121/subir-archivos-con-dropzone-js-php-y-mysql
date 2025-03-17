@@ -53,7 +53,7 @@ include_once '../settings/config.php';
 				<div class="mt-4 mb-4">
 					<?php
 					if (count($list_files) > 0) { ?>
-						<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+						<div class="row">
 							<div class="col mb-5">
 								<a href="<?php echo CLEAR_DASH; ?>">
 									<i class="bi bi-trash me-3"></i>
@@ -62,7 +62,7 @@ include_once '../settings/config.php';
 						</div>
 					<?php } ?>
 
-					<div id="searchResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+					<div id="searchResults" class="row">
 						<?php
 						include(BASE_PATH_COMPONENTS . '/files.php');
 						?>

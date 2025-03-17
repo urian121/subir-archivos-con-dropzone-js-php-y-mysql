@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Mostrar el loader
   $("#loader").fadeOut("slow");
 
-    let ruta = window.location.origin + "/driver-edumetrics/actions/upload.php";
     // Desactivar el autodescubrimiento
     Dropzone.autoDiscover = false;
 
@@ -16,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Inicializar Dropzone
     var myDropzone = new Dropzone("#demo-upload", {
-      url: ruta,
+      url: `${ruta_base}actions/upload.php`,
       //url: "./actions/upload.php", // URL de destino
       paramName: "file", // Nombre del parámetro de archivo
       maxFilesize: 10, // Tamaño máximo en MB

@@ -17,9 +17,13 @@ include_once '../settings/config.php'; // obtener parametros de configuracion
     <title>Edumetrics Drive</title>
     <link rel="shortcut icon" href="../assets/imgs/icon.ico" />
     <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/loader.css">
 </head>
 
 <body>
+
+    <div id='loader'></div>
+
     <div class="login-card" id="loginDefault">
         <div class="brand">
             <img class="brand-logo" src="../assets/imgs/logo-edumetrix-drive.png" alt="logo">
@@ -85,8 +89,11 @@ include_once '../settings/config.php'; // obtener parametros de configuracion
 
     </div>
 
+    <script src="../assets/js/jquery-3.7.1.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            $("#loader").fadeOut("slow");
+
             document.getElementById("loginEstudiante").addEventListener("click", toggleForms);
             document.getElementById("volverLoginDefault").addEventListener("click", toggleForms);
         });

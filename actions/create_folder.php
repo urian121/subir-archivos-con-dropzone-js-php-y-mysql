@@ -4,7 +4,7 @@ include('../settings/settingBD.php');
 
 $nombre_folder  = trim($_POST['nombre_folder']);
 $created_by     = trim($_POST['created_by']);
-$id_directorio  = trim($_POST['id_directorio']); // ID del directorio seleccionado
+$id_directorio  = ucfirst(trim($_POST['id_directorio'])) ?? 1; // ID del directorio seleccionado por default el directorio 1
 
 
 // Verificar si el directorio existe

@@ -7,10 +7,14 @@ window.sendFileDash = function (idFile) {
   document
     .getElementById("confirmarEliminar")
     .addEventListener("click", async function () {
+
       try {
-        const { data } = await axios.post("actions/send_file_dash.php", {
-          id_archivo: idFile,
-        });
+        const { data } = await axios.post(
+          `${ruta_base}actions/send_file_dash.php`,
+          {
+            id_archivo: idFile,
+          }
+        );
 
         if (data.success) {
           // Cerrar el modal

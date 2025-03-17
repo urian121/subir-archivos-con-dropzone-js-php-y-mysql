@@ -11,9 +11,10 @@ function obtenerArchivosCompartidos($servidor, $id_directorio, $query_search)
             nombre_sistema, extension, ruta 
         FROM tbl_drive_files
         WHERE activo = 1 
-        -- AND  shared_files = 1
         AND id_directorio = '$id_directorio'
-        AND  nombre_original LIKE '%$query_search%'
+        AND en_papelera = 0
+        AND id_folder = 0
+        AND nombre_original LIKE '%$query_search%'
         ORDER BY id_drive DESC";
     $resultado = $servidor->query($query);
     $archivos = [];
@@ -68,7 +69,11 @@ function obtenerIcono($extension)
 function obtenerArchivosPorCarpeta($servidor, $folderId)
 {
     $folderId = trim($folderId);
-    $query = "SELECT * FROM tbl_drive_files WHERE id_folder = '$folderId'";
+    $query = "SELECT * FROM tbl_drive_files 
+        WHERE activo = 1 
+        AND en_papelera = 0 
+        AND id_folder = '$folderId' 
+    ORDER BY id_drive DESC";
     $result = mysqli_query($servidor, $query);
 
     // Crear un array para almacenar los archivos
