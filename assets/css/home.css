@@ -14,6 +14,15 @@ h1, h5 {
   border-radius: 10px;
   background-color: #f8f9fa;
   flex-shrink: 0; /* Evita que se reduzcan en pantallas pequeñas */
+  position: relative;
+}
+.folder-name {
+    position: absolute;
+    bottom: 10px;  /* Ajusta la posición según sea necesario */
+}
+
+.folder .file-item {
+    margin-top: 10px; 
 }
 
 .folder h4 {
@@ -21,6 +30,7 @@ h1, h5 {
   font-size: 18px; /* Tamaño del texto */
   word-wrap: break-word;
   max-width: 100%;
+  position: absolute;
 }
 
 .folder .icon {

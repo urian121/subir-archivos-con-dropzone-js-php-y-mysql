@@ -84,13 +84,18 @@ include_once '../settings/config.php';
 			document.querySelectorAll(".connected-list").forEach((folder) => {
 				new Sortable(folder, {
 					group: "shared",
-					animation: 150,
 					onAdd: function(evt) {
-						let fileId = evt.item.getAttribute("data-id");
+						let fileId = evt.item.getAttribute("data-id"); // Obtener el ID del archivo
 						let folderId = evt.to.closest(".folder").getAttribute("data-folder");
-						let ruta = "../actions/move_file.php";
+
+						// Ocultar el archivo en la lista original
+						let draggedFile = document.querySelector(`.file-item[data-id='${fileId}']`);
+						if (draggedFile) {
+							draggedFile.style.display = "none";
+						}
+
 						// Enviar datos al backend
-						fetch(ruta, {
+						fetch("../actions/move_file.php", {
 								method: "POST",
 								headers: {
 									"Content-Type": "application/json",
@@ -102,13 +107,9 @@ include_once '../settings/config.php';
 							})
 							.then((response) => response.text())
 							.then((html) => {
-								// Actualizar el contenedor de archivos después de mover
-								let folderContainer = document.querySelector(
-									`.folder[data-folder='${folderId}'] .connected-list`
-								);
-								folderContainer.innerHTML = html;
+								console.log('Todo OK');
 							})
-							.catch((error) => console.error("Error al cargar archivos:", error));
+							.catch((error) => console.error("Error al mover el archivo:", error));
 					},
 				});
 			});

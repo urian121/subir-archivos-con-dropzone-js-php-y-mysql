@@ -28,7 +28,7 @@ if ($list_files) {
                         </li>
                         <li>
                             <a class="dropdown-item" download="<?php echo $archivo['nombre_sistema']; ?>"
-                                href="<?php echo DOWNLOADS_FILE; ?>?id=<?php echo $archivo['id_drive']; ?>"><i class="bi bi-download"></i>
+                                href="<?php echo DOWNLOADS_FILE; ?>?id_drive=<?php echo $archivo['id_drive']; ?>"><i class="bi bi-download"></i>
                                 Descargar
                             </a>
                         </li>
@@ -42,7 +42,7 @@ if ($list_files) {
                     </ul>
                 </div>
                 <div class="card-body d-flex flex-column">
-                    <a href="<?php echo $archivo['ruta']; ?>" target="_blank" class="text-decoration-none text-dark">
+                    <a href="<?php echo UPLOADS_PATH . $archivo['nombre_sistema']; ?>" target="_blank" class="text-decoration-none text-dark">
                         <div class="file-preview mb-3 d-flex justify-content-center align-items-center" style="height: 130px;">
                             <?php echo $preview; ?>
                         </div>

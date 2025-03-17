@@ -65,7 +65,7 @@ foreach ($list_files as $archivo) {
                     </li>
                     <li>
                         <a class="dropdown-item" download="<?php echo $archivo['nombre_sistema']; ?>"
-                            href="<?php echo DOWNLOADS_FILE; ?>?id=<?php echo $archivo['id_drive']; ?>">
+                            href="<?php echo DOWNLOADS_FILE; ?>?id_drive=<?php echo $archivo['id_drive']; ?>">
                             <i class="bi bi-download"></i>
                             Descargar
                         </a>

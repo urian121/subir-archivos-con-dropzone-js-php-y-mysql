@@ -4,7 +4,7 @@ include('../settings/settingBD.php');
 
 
 // Obtener y validar el ID del archivo
-$id_archivo = trim($_GET['id_drive']);
+$id_archivo = trim($_REQUEST['id_drive']);
 
 $path = "../uploads/";
 // Consultar el archivo en la base de datos
