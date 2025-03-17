@@ -1,33 +1,20 @@
 <?php
-function obtenerArchivosHome($servidor, $query_search)
+
+/**
+ * Función para obtener los archivos compartidos,que pertenecen al directorio actual
+ */
+function obtenerArchivosCompartidos($servidor, $id_directorio, $query_search)
 {
     // Construir la consulta base
     $query = "SELECT 
             id_drive, nombre_original,
-            nombre_sistema, extension,
-            ruta FROM tbl_drive_files
-        WHERE activo = 1 AND id_folder = 0
-        AND en_papelera = 0 
-        AND id_folder = 0
-        AND nombre_original LIKE '%$query_search%'  ORDER BY id_drive DESC";
-    $resultado = $servidor->query($query);
-
-    $archivos = [];
-    while ($archivo = $resultado->fetch_assoc()) {
-        $archivos[] = $archivo;
-    }
-
-    return $archivos;
-}
-
-function obtenerArchivosCompartidos($servidor, $query_search)
-{
-    // Construir la consulta base
-    $query = "SELECT 
-            id_drive, nombre_original,
-            nombre_sistema, extension,
-            ruta FROM tbl_drive_files
-        WHERE activo = 1 AND  shared_files=1 AND  nombre_original LIKE '%$query_search%'  ORDER BY id_drive DESC";
+            nombre_sistema, extension, ruta 
+        FROM tbl_drive_files
+        WHERE activo = 1 
+        -- AND  shared_files = 1
+        AND id_directorio = '$id_directorio'
+        AND  nombre_original LIKE '%$query_search%'
+        ORDER BY id_drive DESC";
     $resultado = $servidor->query($query);
     $archivos = [];
     while ($archivo = $resultado->fetch_assoc()) {

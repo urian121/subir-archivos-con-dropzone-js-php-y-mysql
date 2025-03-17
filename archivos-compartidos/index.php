@@ -1,4 +1,8 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 include_once '../settings/auth.php';
 $infUser = obtenerSesionActiva();
 if (!$infUser) {
@@ -33,6 +37,7 @@ include_once '../settings/config.php';
 		<?php
 		include_once(SETTINGS_BD);
 		include(FUNCTIONS_PATH . '/funciones.php');
+		$archivos_por_extensiones = archivosPorExtension($servidor);
 		include(BASE_PATH_COMPONENTS . '/header.php');
 		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivoModal.html');
 		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
@@ -57,7 +62,7 @@ include_once '../settings/config.php';
 
 				<div id="searchResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
 					<?php
-					$list_files = obtenerArchivosCompartidos($servidor, $query_search = '');
+					$list_files = obtenerArchivosCompartidos($servidor, $id_directorio, $query_search = '');
 					include(BASE_PATH_COMPONENTS . '/files.php');
 					?>
 				</div>
@@ -83,9 +88,9 @@ include_once '../settings/config.php';
 					onAdd: function(evt) {
 						let fileId = evt.item.getAttribute("data-id");
 						let folderId = evt.to.closest(".folder").getAttribute("data-folder");
-
+						let ruta = "../actions/move_file.php";
 						// Enviar datos al backend
-						fetch("move_file.php", {
+						fetch(ruta, {
 								method: "POST",
 								headers: {
 									"Content-Type": "application/json",

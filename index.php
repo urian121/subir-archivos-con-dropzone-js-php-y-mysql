@@ -60,7 +60,7 @@ include_once 'settings/config.php';
 
 				<div id="searchResults" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
 					<?php
-					$list_files = obtenerArchivosHome($servidor, $query_search = '');
+					$list_files = obtenerArchivosCompartidos($servidor, $id_directorio, $query_search = '');
 					include(BASE_PATH_COMPONENTS . '/files.php');
 					?>
 				</div>
@@ -87,9 +87,10 @@ include_once 'settings/config.php';
 					onAdd: function(evt) {
 						let fileId = evt.item.getAttribute("data-id");
 						let folderId = evt.to.closest(".folder").getAttribute("data-folder");
+						let ruta = "actions/move_file.php";
 
 						// Enviar datos al backend
-						fetch("move_file.php", {
+						fetch(ruta, {
 								method: "POST",
 								headers: {
 									"Content-Type": "application/json",

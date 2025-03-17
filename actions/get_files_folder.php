@@ -1,7 +1,7 @@
 <?php
-include('settings/config.php');
-include('settings/settingBD.php');
-include('functions/funciones.php');
+include('../settings/config.php');
+include('../settings/settingBD.php');
+include('../functions/funciones.php');
 
 $folderId = trim($_GET['folder_id']);
 $list_files_folder = obtenerArchivosPorCarpeta($servidor, $folderId);

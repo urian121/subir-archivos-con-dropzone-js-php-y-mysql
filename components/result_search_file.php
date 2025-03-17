@@ -5,7 +5,7 @@ include('../functions/funciones.php');
 
 $query_search = isset($_GET['q']) ? $_GET['q'] : '';
 // Obtener archivos según el criterio de búsqueda
-$list_files = obtenerArchivosHome($servidor, $query_search);
+$list_files = obtenerArchivosCompartidos($servidor, $id_directorio, $query_search = '');
 
 
 foreach ($list_files as $archivo) {

@@ -1,6 +1,6 @@
 <div class="sidebar pt-2" id="sidebar">
     <div class="px-3">
-        <button id="btnUploadFile" class="new-button btn d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button id="btnUploadFile" class="new-button btn d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#modalUploadFile">
             <i class="bi bi-plus me-2"></i>
             <span>Subir nuevo archivo</span>
         </button>

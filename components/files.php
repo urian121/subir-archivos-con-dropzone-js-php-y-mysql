@@ -32,7 +32,7 @@ if ($list_files) {
                                 Descargar
                             </a>
                         </li>
-                        <li>
+                        <li id="linkEnPapelera">
                             <a class="dropdown-item eliminar-archivo" onclick="sendFileDash('<?php echo $archivo['id_drive']; ?>')" href="#" data-id="<?php echo $archivo['id_drive']; ?>"
                                 data-nombre="<?php echo htmlspecialchars($archivo['nombre_original']); ?>"><i
                                     class="bi bi-trash"></i>
