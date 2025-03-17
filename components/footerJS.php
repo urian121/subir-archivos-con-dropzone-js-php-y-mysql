@@ -13,18 +13,4 @@
 
 	<script src="<?php echo ASSETS_JS; ?>/sortable.min.js?v=<?php echo mt_rand(); ?>"></script>
 	<script src="<?php echo ASSETS_JS; ?>/open_folder.js?v=<?php echo mt_rand(); ?>"></script>
-
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			const btnCrearCarpeta = document.querySelector('[data-bs-target="#createFolder"]');
-			btnCrearCarpeta.addEventListener("click", function() {
-				setTimeout(function() {
-					document.querySelector('#nombre_folder').focus();
-				}, 500);
-
-				// Pasar el ID al formulario de creación de carpeta
-				document.querySelector('#id_directorio').value = "<?php echo $_SESSION['id_directorio']; ?>";
-
-			});
-		});
-	</script>
+	<script src="<?php echo ASSETS_JS; ?>/validaciones.js?v=<?php echo mt_rand(); ?>"></script>
