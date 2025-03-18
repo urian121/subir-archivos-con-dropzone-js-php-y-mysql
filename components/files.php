@@ -54,8 +54,6 @@ if ($list_files) {
     <?php
     }
 } else { ?>
-
     <p class="text-center" style="width: 100%;">No hay archivos 📄</p>
-
 <?php }
 ?>

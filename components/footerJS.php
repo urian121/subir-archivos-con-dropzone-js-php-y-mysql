@@ -12,7 +12,6 @@
 	<script src="<?php echo ASSETS_JS; ?>/send_file_dash.js?v=<?php echo mt_rand(); ?>"></script>
 
 	<script src="<?php echo ASSETS_JS; ?>/sortable.min.js?v=<?php echo mt_rand(); ?>"></script>
-	<script src="<?php echo ASSETS_JS; ?>/open_folder.js?v=<?php echo mt_rand(); ?>"></script>
 	<script src="<?php echo ASSETS_JS; ?>/validaciones.js?v=<?php echo mt_rand(); ?>"></script>
 
 	<script>

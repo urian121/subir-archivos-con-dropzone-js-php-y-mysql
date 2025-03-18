@@ -180,7 +180,7 @@ function obtenerDirectorios($servidor)
 function obtenerCarpetasPorDirectorio($servidor, $id_folder)
 {
     $carpetas = [];
-    $sql = "SELECT * FROM tbl_drive_folders  WHERE estatus_folder = 1 AND id_directorio ='$id_folder ' ORDER BY id_folder DESC";
+    $sql = "SELECT * FROM tbl_drive_folders  WHERE estatus_folder = 1 AND id_directorio ='$id_folder' ORDER BY id_folder DESC";
     $resultado = mysqli_query($servidor, $sql);
 
     if ($resultado) {
@@ -188,6 +188,5 @@ function obtenerCarpetasPorDirectorio($servidor, $id_folder)
             $carpetas[] = $fila;
         }
     }
-
     return $carpetas;
 }

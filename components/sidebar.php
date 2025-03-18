@@ -19,10 +19,16 @@
             $dir_url = trim($directorio['url_directorio'], './');
             $is_active = ($current_page == basename($dir_url));
 
-            // Guardar en sesión solo si el directorio está activo
+            // Verificar si la variable de sesión ya existe y eliminarla
+            if (isset($_SESSION['id_directorio'])) {
+                unset($_SESSION['id_directorio']);
+            }
+
+            // Asignar el nuevo id del directorio activo
             if ($is_active) {
                 $_SESSION['id_directorio'] = $directorio['id_directorio'];
             }
+
         ?>
             <a href="<?php echo BASE_HOME . $dir_url; ?>"
                 id="directorio_<?php echo $directorio['id_directorio']; ?>"
@@ -31,7 +37,7 @@
                 class="sidebar-item d-flex align-items-center text-decoration-none mb-1 
             <?php echo ($is_active ? 'active' : ''); ?>">
                 <i class="<?php echo $directorio['icono_directorio']; ?> me-3"></i>
-                <span><?php echo $directorio['nombre_directorio']; ?></span>
+                <span><?php echo $directorio['nombre_directorio'] . ' - ' . $directorio['id_directorio']; ?></span>
             </a>
         <?php } ?>
     </div>

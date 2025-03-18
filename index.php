@@ -53,6 +53,7 @@ include_once 'settings/config.php';
 				<div class="mt-4 mb-4">
 					<div class="row">
 						<?php
+						$folderSelected = isset($_GET['dir']) ? trim($_GET['dir']) : null;
 						include(BASE_PATH_COMPONENTS . '/folders.php');
 						?>
 					</div>
@@ -61,8 +62,14 @@ include_once 'settings/config.php';
 
 				<div id="searchResults" class="row">
 					<?php
-					$list_files = obtenerArchivosCompartidos($servidor, $id_directorio, $query_search = '');
-					include(BASE_PATH_COMPONENTS . '/files.php');
+					// Si existe una carpeta seleccionada
+					if ($folderSelected) {
+						$list_files = obtenerArchivosPorCarpeta($servidor, $folderSelected);
+						include(BASE_PATH_COMPONENTS . '/files.php');
+					} else {
+						$list_files = obtenerArchivosCompartidos($servidor, $id_directorio, $query_search = '');
+						include(BASE_PATH_COMPONENTS . '/files.php');
+					}
 					?>
 				</div>
 			</div>

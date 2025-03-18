@@ -37,6 +37,7 @@ define('ASSETS_IMG', BASE_HOME . 'assets/imgs');
 define('ASSETS_CSS', BASE_HOME . 'assets/css');
 define('ASSETS_JS', BASE_HOME . 'assets/js');
 define('FUNCTIONS_PATH', BASE_PATH . 'functions/');
+define('ACTIONS_PATH', BASE_PATH . 'actions/');
 define('DOWNLOADS_FILE', BASE_HOME . 'actions/download_file.php');
 define('CREATE_FOLDER', BASE_HOME . 'actions/create_folder.php');
 
