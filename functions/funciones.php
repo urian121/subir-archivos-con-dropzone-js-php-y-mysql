@@ -151,7 +151,7 @@ function getPerfil($servidor, $id_user)
 function obtenerArchivosPapelera($servidor)
 {
     $archivos = [];
-    $sql = "SELECT * FROM tbl_drive_files WHERE en_papelera = 1 ORDER BY id_drive DESC";
+    $sql = "SELECT * FROM tbl_drive_files WHERE en_papelera = 1 AND activo = 1 ORDER BY id_drive DESC";
     $result = $servidor->query($sql);
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {

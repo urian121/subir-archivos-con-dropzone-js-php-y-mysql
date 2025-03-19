@@ -36,8 +36,6 @@ include_once '../settings/config.php';
 		$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $id_directorio);
 
 		include(BASE_PATH_COMPONENTS . '/header.php');
-		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivoModal.html');
-		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
 		?>
 

@@ -13,7 +13,7 @@ $resultado = $servidor->query($query);
 
 if ($resultado && $archivo = $resultado->fetch_assoc()) {
 
-    $queryUpdate = "UPDATE tbl_drive_files SET en_papelera = 1 WHERE id_drive = '$id_archivo'";
+    $queryUpdate = "UPDATE tbl_drive_files SET en_papelera = 1, id_directorio = 4 WHERE id_drive = '$id_archivo'";
     $query = $servidor->query($queryUpdate);
     if ($query) {
         echo json_encode(['success' => true, 'message' => 'Archivo enviado a la papelera correctamente']);
