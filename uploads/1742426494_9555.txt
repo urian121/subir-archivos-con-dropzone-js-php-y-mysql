@@ -1,0 +1,79 @@
+Muestralotodo.com
+Muestrame.com
+muestralo.com
+
+El Product Owner es la persona responsable de maximizar el valor del producto y gestionar el backlog del producto, asegurando que el equipo de desarrollo trabaje en las prioridades correctas.
+
+
+
+Los valores de Scrum son compromiso, enfoque, apertura, respeto y valentía.
+
+
+Con Nextjs , hay tres tipos de renderizado disponibles:
+
+- renderizado del lado del cliente, renderizado del lado del servidor y generación de sitios estáticos.
+
+En la representación del lado del cliente (CSR), se envía al navegador un archivo HTML mínimo y todo el código JavaScript incluido. Luego, el código JavaScript se ejecuta en el navegador para representar la página.
+
+En la representación del lado del servidor (SSR), el HTML completo del contenido de la página se representa en el servidor a pedido del usuario y luego se envía al navegador.
+
+En las generaciones de sitios estáticos (SSG), el HTML de cada página se genera en el momento de la compilación y se envía a los navegadores a pedido del usuario.
+
+
+
+
+La diferencia entre PUT y PATCH es:
+
+    PUT == enviará todos los datos
+    PATCH == enviará los datos que se están actualizando
+
+
+/*
+                            ($total > 0) ? $t =
+                                round($total / $fila['activaciones'], 2) * 100 . '%' :
+                                $t =  $total . ' 0%';
+                                */
+                        
+
+
+
+'Typo' Error de tipografía
+
+
+if 'foto' in request.files and request.files['foto'].filename != '':
+
+Traducción en palabras:
+
+"Si existe un archivo llamado 'foto' en los archivos enviados (request.files) 
+y el nombre del archivo no está vacío (filename no es una cadena vacía), entonces..."
+
+SELECT *,
+            CASE 
+                WHEN destino_notificacion = '1' THEN 'Profesores' 
+                WHEN destino_notificacion = '2' THEN 'Estudiantes' 
+                WHEN destino_notificacion = '3' THEN 'Ambos' 
+            END AS destino
+        FROM tbl_notificaciones
+
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+💰
+
+métodos mutables y no mutables en JavaScript.
+Un método mutable en JavaScript es un método que modifica el objeto o el array original sobre el cual se aplica, en lugar de crear y devolver una copia modificada.
+
+
+EJEMPLO JAVASCRIPT PROXYS
+// Crear variables reactivas globales
+const state = reactive({
+  count: 0,
+  user: {
+    name: 'John',
+    age: 25
+  },
+  todos: []
+});
+

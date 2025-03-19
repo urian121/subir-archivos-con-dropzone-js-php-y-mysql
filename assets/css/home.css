@@ -10,31 +10,27 @@ h1, h5 {
   align-items: center;
   justify-content: center;
   text-align: center;
-  overflow: hidden;
   border-radius: 10px;
   background-color: #f8f9fa;
-  flex-shrink: 0; /* Evita que se reduzcan en pantallas pequeñas */
-  position: relative;
+  flex-shrink: 0;
+  position: relative; /* Asegura que los elementos dentro se posicionen relativo a este contenedor */
 }
+
 .folder-name {
-    position: absolute;
-    bottom: 10px;  /* Ajusta la posición según sea necesario */
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  padding: 0 10px;
+  color: #333;
 }
 
 .folder .file-item {
-    margin-top: 10px; 
-}
-
-.folder h4 {
-  margin: 5px 0;
-  font-size: 18px; /* Tamaño del texto */
-  word-wrap: break-word;
-  max-width: 100%;
-  position: absolute;
+  margin-top: 10px;
 }
 
 .folder .icon {
-  font-size: 50px; /* Tamaño del icono */
+  font-size: 80px !important;
 }
 
 .folder:hover {
@@ -42,14 +38,28 @@ h1, h5 {
   background-color: #c0bfbf;
 }
 
+/* Estilo del Dropdown dentro de .folder */
+.folder .dropdown {
+  position: absolute;
+  top: 5px; /* Ajuste para mantener el dropdown en la parte superior */
+  right: 5px; /* Asegura que el dropdown esté alineado a la derecha */
+}
+
+.file-menu {
+  background-color: #e0e0e0; /* Color de fondo del botón */
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .active-folder {
   background-color: #c0bfbf;
   border: 1px solid #000;
 }
 
-.titulo_modal {
-  text-align: center;
-}
 .dropzone {
   width: 98%;
   margin: 1%;
@@ -82,6 +92,10 @@ h1, h5 {
 
 .dropzone.dz-started .dz-message span.text {
   display: none;
+}
+
+.titulo_modal {
+  text-align: center;
 }
 
 .modal-footer-upload {
