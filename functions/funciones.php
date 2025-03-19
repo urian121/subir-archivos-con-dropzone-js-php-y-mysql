@@ -189,3 +189,26 @@ function obtenerCarpetasPorDirectorio($servidor, $id_folder)
     }
     return $carpetas;
 }
+
+
+/**
+ * Funcion para obtener los archivos por extension y directorio
+ */
+function obtenerArchivosPorExtension($servidor, $extension, $id_directorio)
+{
+
+    $where = "WHERE activo = 1 AND id_directorio ='$id_directorio'";
+    if ($extension !== 'all' && $extension !== '') {
+        $where .= " AND extension LIKE '%$extension%'";
+    }
+
+    $query = "SELECT * FROM tbl_drive_files $where";
+    $result = mysqli_query($servidor, $query);
+    $archivos = [];
+    if ($result) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $archivos[] = $row;
+        }
+    }
+    return $archivos;
+}

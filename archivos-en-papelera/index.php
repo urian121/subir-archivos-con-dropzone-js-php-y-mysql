@@ -54,7 +54,7 @@ include_once '../settings/config.php';
 					if (count($list_files) > 0) { ?>
 						<div class="row">
 							<div class="col mb-5">
-								<a href="<?php echo CLEAR_DASH; ?>">
+								<a href="<?php echo CLEAR_TRASH; ?>">
 									<i class="bi bi-trash me-3"></i>
 									Limpiar la papelera</a>
 							</div>

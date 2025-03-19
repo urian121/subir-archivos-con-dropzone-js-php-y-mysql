@@ -1,4 +1,4 @@
-window.sendFileDash = function (idFile) {
+window.sendFileTrash = function (idFile) {
   // Mostrar el modal
   let idModal = document.querySelector("#eliminarArchivoModal");
   new bootstrap.Modal(idModal).show();
@@ -7,10 +7,9 @@ window.sendFileDash = function (idFile) {
   document
     .getElementById("confirmarEliminar")
     .addEventListener("click", async function () {
-
       try {
         const { data } = await axios.post(
-          `${ruta_base}actions/send_file_dash.php`,
+          `${ruta_base}actions/send_file_to_trash.php`,
           {
             id_archivo: idFile,
           }
