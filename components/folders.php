@@ -6,7 +6,7 @@
         <?php foreach ($carpetasPorDirectorio as $folder):
             $isActive = ($folder['id_folder'] == $folderSelected) ? 'active-folder' : ''; ?>
 
-            <a href="./?dir=<?= $folder['id_folder']; ?>" class="text-decoration-none">
+            <a href="./index.php?dir=<?= $folder['id_folder']; ?>" class="text-decoration-none">
                 <div class="folder border p-3 mx-4 d-flex flex-column align-items-center text-center connected-list mb-3 <?= $isActive; ?>"
                     data-folder="<?= $folder['id_folder']; ?>">
                     <h4 class="icon fs-1">📁</h4>

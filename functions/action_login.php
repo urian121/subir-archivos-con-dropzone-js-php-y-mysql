@@ -39,6 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['id_user']     = $rowData['id_user'];
                     $_SESSION['name_user']   = $rowData['name_user'];
                     $_SESSION['email_user']  = $rowData['email_user'];
+
                     $Update = ("UPDATE $table SET sesion_desde_user='$sesion_desde_user' WHERE email_user='$email_user'");
                     $servidor->query($Update) or die("Error al actualizar:" . mysqli_error($servidor));
                     header("Location: " . BASE_HOME . 'index.php?welcome=1');

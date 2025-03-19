@@ -31,8 +31,9 @@ include_once 'settings/config.php';
 
 	<div class="container-fluid p-0">
 		<?php
-		$id_directorio = $_SESSION['id_directorio'] ?? 1;
-		include_once(SETTINGS_BD);
+	$id_directorio = isset($_GET['link']) ? trim($_GET['link']) : 1;
+
+	include_once(SETTINGS_BD);
 		include(FUNCTIONS_PATH . '/funciones.php');
 		$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $id_directorio);;
 

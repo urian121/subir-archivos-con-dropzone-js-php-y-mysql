@@ -17,21 +17,11 @@
         $current_page = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
         foreach ($directorios as $directorio) {
             $dir_url = trim($directorio['url_directorio'], './');
+            // Verificar si la URL actual coincide con la URL del directorio
             $is_active = ($current_page == basename($dir_url));
-
-            // Verificar si la variable de sesión ya existe y eliminarla
-            if (isset($_SESSION['id_directorio'])) {
-                unset($_SESSION['id_directorio']);
-            }
-
-            // Asignar el nuevo id del directorio activo
-            if ($is_active) {
-                $_SESSION['id_directorio'] = $directorio['id_directorio'];
-            }
-
         ?>
-            <a href="<?php echo BASE_HOME . $dir_url; ?>"
-                id="directorio_<?php echo $directorio['id_directorio']; ?>"
+            <a href="<?php echo BASE_HOME . $dir_url; ?>?link=<?php echo $directorio['id_directorio']; ?>"
+                id="directorio_<?php echo $directorio['id_directorio']; ?>?"
                 data-id="<?php echo $directorio['id_directorio']; ?>"
                 <?php echo ($directorio['id_directorio'] == 5) ? 'data-bs-toggle="modal" data-bs-target="#updateUser"' : ''; ?>
                 class="sidebar-item d-flex align-items-center text-decoration-none mb-1 

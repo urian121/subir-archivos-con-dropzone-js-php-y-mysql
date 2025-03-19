@@ -30,6 +30,11 @@ document.addEventListener("DOMContentLoaded", function () {
   sidebarItems.forEach((item) => {
     item.addEventListener("click", function () {
       const directorioID = this.getAttribute("data-id");
+
+      // Remover la clase 'active' de todos los elementos
+      sidebarItems.forEach((el) => el.classList.remove("active"));
+      this.classList.add("active");
+
       if (directorioID) {
         // Guardar el ID en localStorage
         localStorage.setItem("id_directorio", directorioID);

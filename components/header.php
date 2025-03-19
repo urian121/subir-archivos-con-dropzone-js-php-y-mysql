@@ -9,7 +9,7 @@
 
             <!-- Drive logo and title (centrado en móvil) -->
             <div class="d-flex align-items-center me-md-4 mx-auto mx-md-0">
-                <a href="<?php echo BASE_HOME; ?>/index.php" class="text-decoration-none">
+                <a href="<?php echo BASE_HOME; ?>index.php" class="text-decoration-none">
                     <img src="<?php echo ASSETS_IMG; ?>/logo-edumetrix-drive.png" alt="driver edumetrisc">
                 </a>
             </div>

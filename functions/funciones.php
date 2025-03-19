@@ -33,7 +33,6 @@ function archivosPorExtensionYDirectorio($servidor, $id_directorio)
     $query = "SELECT extension FROM tbl_drive_files 
         WHERE activo = 1
         AND id_directorio = '$id_directorio' GROUP BY extension";
-    //print_r($query);
     $resultado = $servidor->query($query);
 
     if (!$resultado) {

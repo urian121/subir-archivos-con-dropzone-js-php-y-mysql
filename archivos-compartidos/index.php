@@ -35,7 +35,7 @@ include_once '../settings/config.php';
 
 	<div class="container-fluid p-0">
 		<?php
-		$id_directorio = $_SESSION['id_directorio'] ?? 1;
+		$id_directorio = isset($_GET['link']) ? trim($_GET['link']) : 1;
 		include_once(SETTINGS_BD);
 		include(FUNCTIONS_PATH . '/funciones.php');
 		$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $id_directorio);
@@ -56,7 +56,7 @@ include_once '../settings/config.php';
 				<div class="mt-4 mb-4">
 					<div class="row">
 						<?php
-	$folderSelected = isset($_GET['dir']) ? trim($_GET['dir']) : null;
+						$folderSelected = isset($_GET['dir']) ? trim($_GET['dir']) : null;
 						include(BASE_PATH_COMPONENTS . '/folders.php');
 						?>
 					</div>
@@ -64,11 +64,11 @@ include_once '../settings/config.php';
 
 				<div id="searchResults" class="row">
 					<?php
-	// Si existe una carpeta seleccionada
-	if ($folderSelected) {
-		$list_files = obtenerArchivosPorCarpeta($servidor, $folderSelected);
-		include(BASE_PATH_COMPONENTS . '/files.php');
-	} else {
+					// Si existe una carpeta seleccionada
+					if ($folderSelected) {
+						$list_files = obtenerArchivosPorCarpeta($servidor, $folderSelected);
+						include(BASE_PATH_COMPONENTS . '/files.php');
+					} else {
 						$list_files = obtenerArchivosCompartidos($servidor, $id_directorio, $query_search = '');
 						include(BASE_PATH_COMPONENTS . '/files.php');
 					}
