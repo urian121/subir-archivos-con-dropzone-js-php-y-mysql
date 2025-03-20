@@ -142,3 +142,6 @@ select.custom-select {
   border: 1px solid #ccc;
   border-radius: 10px;
 }
+.text-black{
+  color: black;
+}

@@ -40,6 +40,7 @@ define('FUNCTIONS_PATH', BASE_PATH . 'functions/');
 define('ACTIONS_PATH', BASE_PATH . 'actions/');
 define('DOWNLOADS_FILE', BASE_HOME . 'actions/download_file.php');
 define('CREATE_FOLDER', BASE_HOME . 'actions/create_folder.php');
+define('ESTATUS_FOLDER', BASE_HOME . 'actions/estatus_public_folder.php');
 
 // SETTINGS MENU
 //define('LINK_ARCHIVOS_COMPARTIDOS', BASE_HOME . 'archivos-compartidos/');

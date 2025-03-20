@@ -16,13 +16,12 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="folderMenu<?= $folder['id_folder']; ?>">
                         <li>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="toggleFolderVisibility(<?= $folder['id_folder']; ?>)">
-                                <i class="bi bi-box-arrow-up-right"></i> Publicar
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="toggleFolderVisibility(<?= $folder['id_folder']; ?>)">
-                                <i class="bi bi-lock"></i> Bloquear
+                            <a class="dropdown-item" href="<?php echo BASE_HOME; ?>actions/estatus_public_folder.php?id_folder=<?= $folder['id_folder']; ?>&estatus=<?= $folder['public']; ?>">
+                                <?php if ($folder['public'] == 1) { ?>
+                                    <i class="bi bi-lock fw-bold text-black"></i> Bloquear
+                                <?php } else { ?>
+                                    <i class="bi bi-eye fw-bold text-success"></i> Publica
+                                <?php } ?>
                             </a>
                         </li>
                         <li>
