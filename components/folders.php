@@ -26,7 +26,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="javascript:void(0);" onclick="toggleFolderVisibility(<?= $folder['id_folder']; ?>)">
+                            <a class="dropdown-item" onclick="deleteFolder('<?php echo $folder['id_folder']; ?>')" href="#">
                                 <i class="bi bi-trash"></i> Eliminar
                             </a>
                         </li>

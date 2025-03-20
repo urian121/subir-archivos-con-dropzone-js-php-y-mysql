@@ -54,11 +54,12 @@
 
 .dropdown-menu {
   min-width: 200px;
+  z-index: 1050; /* Asegurar que el menú desplegable esté por encima de otros elementos */
 }
 
 .file-menu {
   border: none;
-  background: #e0e0e0 !important;
+  background: #bfbebe !important;
   padding: 0;
 }
 
@@ -102,12 +103,4 @@
 
 .card:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.animate-card {
-  transition: transform 0.3s ease-in-out;
-}
-
-.animate-card:hover {
-  transform: translateY(-10px);
 }

@@ -40,7 +40,7 @@ include_once '../settings/config.php';
 		include(FUNCTIONS_PATH . '/funciones.php');
 		$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $id_directorio);
 		include(BASE_PATH_COMPONENTS . '/header.php');
-		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivoModal.html');
+	include(BASE_PATH_COMPONENTS . '/modalEliminarArchivo.html');
 		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
 		?>
