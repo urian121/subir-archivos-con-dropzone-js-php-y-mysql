@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const linkEnPapelera = document.querySelector("#linkEnPapelera");
   const folders = document.querySelectorAll(".folder"); // Seleccionamos todas las carpetas
 
-  // Función para actualizar el estado del botón según el id_directorio
+  // Función para actualizar el estado del botón según el id_menu_link
   function actualizarEstadoBoton() {
-    let storedID = localStorage.getItem("id_directorio");
+    let storedID = localStorage.getItem("id_menu_link");
     if (btnUpload) {
       if (storedID == "4") {
         btnUpload.disabled = true;
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (directorioID) {
         // Guardar el ID en localStorage
-        localStorage.setItem("id_directorio", directorioID);
+        localStorage.setItem("id_menu_link", directorioID);
         console.log("Nuevo ID de directorio:", directorioID);
 
         // Actualizar el estado del botón
@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
 
     // Pasar el ID al formulario de creación de carpeta
-    document.querySelector("#id_directorio").value =
-      localStorage.getItem("id_directorio");
+    document.querySelector("#id_menu_link").value =
+      localStorage.getItem("id_menu_link");
   });
 
   /**
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
    */
   // Manejar el clic en el botón de subida de archivos
   btnUpload.addEventListener("click", function () {
-    let directorio_seleccionado = localStorage.getItem("id_directorio");
+    let directorio_seleccionado = localStorage.getItem("id_menu_link");
     console.log("Directorio:", directorio_seleccionado);
 
     let folderId = 0;
@@ -77,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector("#id_folder_seleccionado").value = folderId;
-    document.querySelector("#id_directorio_seleccionado").value =
-      directorio_seleccionado;
+    document.querySelector("#id_menu_link").value = directorio_seleccionado;
   });
 });

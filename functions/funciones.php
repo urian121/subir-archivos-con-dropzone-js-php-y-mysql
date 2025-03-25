@@ -3,7 +3,7 @@
 /**
  * Función para obtener los archivos compartidos,que pertenecen al directorio actual
  */
-function obtenerArchivosCompartidos($servidor, $id_directorio, $query_search)
+function obtenerArchivosCompartidos($servidor, $link_seleccionado)
 {
     // Construir la consulta base
     $query = "SELECT 
@@ -11,10 +11,9 @@ function obtenerArchivosCompartidos($servidor, $id_directorio, $query_search)
             nombre_sistema, extension, ruta 
         FROM tbl_drive_files
         WHERE activo = 1 
-        AND id_directorio = '$id_directorio'
+        AND id_menu_link = '$link_seleccionado'
         AND en_papelera = 0
         AND id_folder = 0
-        AND nombre_original LIKE '%$query_search%'
         ORDER BY id_drive DESC";
     $resultado = $servidor->query($query);
     $archivos = [];
@@ -28,11 +27,11 @@ function obtenerArchivosCompartidos($servidor, $id_directorio, $query_search)
 /**
  * Funcion para obtener las extensiones de los archivos de un directorio en especifico
  */
-function archivosPorExtensionYDirectorio($servidor, $id_directorio)
+function archivosPorExtensionYDirectorio($servidor, $link_seleccionado)
 {
     $query = "SELECT extension FROM tbl_drive_files 
         WHERE activo = 1
-        AND id_directorio = '$id_directorio' GROUP BY extension";
+        AND id_menu_link = '$link_seleccionado' GROUP BY extension";
     $resultado = $servidor->query($query);
 
     if (!$resultado) {
@@ -162,10 +161,10 @@ function obtenerArchivosPapelera($servidor)
 }
 
 // Lista de directorios
-function obtenerDirectorios($servidor)
+function getLinksMenu($servidor)
 {
     $directorios = [];
-    $sql = "SELECT * FROM tbl_drive_directorios  WHERE estatus_directorio = 1 ORDER BY posicion_directorio ASC";
+    $sql = "SELECT * FROM tbl_drive_menu_links  WHERE estatus_menu = 1 ORDER BY posicion_menu ASC";
     $result = $servidor->query($sql);
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -176,10 +175,10 @@ function obtenerDirectorios($servidor)
 }
 
 // Funcion para obtener carpetas por directorio
-function obtenerCarpetasPorDirectorio($servidor, $id_folder)
+function obtenerCarpetasPorDirectorio($servidor, $id_menu_link)
 {
     $carpetas = [];
-    $sql = "SELECT * FROM tbl_drive_folders  WHERE estatus_folder = 1 AND id_directorio ='$id_folder' ORDER BY id_folder DESC";
+    $sql = "SELECT * FROM tbl_drive_folders  WHERE estatus_folder = 1 AND id_menu_link ='$id_menu_link' ORDER BY id_folder DESC";
     $resultado = mysqli_query($servidor, $sql);
 
     if ($resultado) {
@@ -194,10 +193,10 @@ function obtenerCarpetasPorDirectorio($servidor, $id_folder)
 /**
  * Funcion para obtener los archivos por extension y directorio
  */
-function obtenerArchivosPorExtension($servidor, $extension, $id_directorio)
+function obtenerArchivosPorExtension($servidor, $extension, $id_menu_link)
 {
 
-    $where = "WHERE activo = 1 AND id_directorio ='$id_directorio'";
+    $where = "WHERE activo = 1 AND id_menu_link ='$id_menu_link'";
     if ($extension !== 'all' && $extension !== '') {
         $where .= " AND extension LIKE '%$extension%'";
     }

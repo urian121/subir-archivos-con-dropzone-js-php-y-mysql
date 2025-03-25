@@ -4,19 +4,19 @@ include('../settings/settingBD.php');
 
 $nombre_folder  = trim($_POST['nombre_folder']);
 $created_by     = trim($_POST['created_by']);
-$id_directorio  = ucfirst(trim($_POST['id_directorio'])) ?? 1; // ID del directorio seleccionado por default el directorio 1
+$id_menu_link  = ucfirst(trim($_POST['id_menu_link'])) ?? 1; // ID del directorio seleccionado por default el directorio 1
 $id_folder_padre = !empty(trim($_POST['id_folder_padre'])) ? trim($_POST['id_folder_padre']) : null;
 
 // Verificar si el directorio existe
-$checkDirectorio = "SELECT id_directorio FROM tbl_drive_directorios WHERE id_directorio = $id_directorio";
+$checkDirectorio = "SELECT id_menu_link FROM tbl_drive_menu_links WHERE id_menu_link = $id_menu_link";
 $resultDir = $servidor->query($checkDirectorio);
 if ($resultDir->num_rows == 0) {
-    die("Error: El id_directorio ($id_directorio) no existe.");
+    die("Error: El id_menu_link ($id_menu_link) no existe.");
 }
 
 $query = $id_folder_padre === null
-    ? "INSERT INTO tbl_drive_folders (nombre_folder, id_directorio, created_by) VALUES ('$nombre_folder', '$id_directorio', '$created_by')"
-    : "INSERT INTO tbl_drive_folders (nombre_folder, id_directorio, created_by, id_folder_padre) VALUES ('$nombre_folder', '$id_directorio', '$created_by', '$id_folder_padre')";
+    ? "INSERT INTO tbl_drive_folders (nombre_folder, id_menu_link, created_by) VALUES ('$nombre_folder', '$id_menu_link', '$created_by')"
+    : "INSERT INTO tbl_drive_folders (nombre_folder, id_menu_link, created_by, id_folder_padre) VALUES ('$nombre_folder', '$id_menu_link', '$created_by', '$id_folder_padre')";
 
 
 if ($servidor->query($query) === TRUE) {

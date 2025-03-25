@@ -1,6 +1,6 @@
 <div class="d-flex flex-wrap justify-content-start">
     <?php
-    $carpetasPorDirectorio = isset($id_directorio) ? obtenerCarpetasPorDirectorio($servidor, $id_directorio) : [];
+    $carpetasPorDirectorio = isset($link_seleccionado) ? obtenerCarpetasPorDirectorio($servidor, $link_seleccionado) : [];
 
     if (!empty($carpetasPorDirectorio)): ?>
         <?php foreach ($carpetasPorDirectorio as $folder):
@@ -31,8 +31,7 @@
                         </li>
                     </ul>
                 </div>
-
-                <a href="./index.php?dir=<?= $folder['id_folder']; ?>" class="text-decoration-none">
+                <a href="./?folder=<?= $folder['id_folder']; ?>&link=<?= $link_seleccionado; ?>" class="text-decoration-none">
                     <h4 class="icon fs-1">📁</h4>
                     <h4 class="folder-name fs-5 mt-3 text-break"><?= htmlspecialchars($folder['nombre_folder']); ?></h4>
                 </a>

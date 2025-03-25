@@ -15,19 +15,20 @@
         <?php
         // Obtener el nombre del archivo actual sin parámetros
         $current_page = basename(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-        foreach ($directorios as $directorio) {
-            $dir_url = trim($directorio['url_directorio'], './');
+        foreach ($links_menu as $link) {
+            $dir_url = trim($link['url_menu'], './');
+            $id_menu_link = $link['id_menu_link'];
             // Verificar si la URL actual coincide con la URL del directorio
             $is_active = ($current_page == basename($dir_url));
         ?>
-            <a href="<?php echo BASE_HOME . $dir_url; ?>?link=<?php echo $directorio['id_directorio']; ?>"
-                id="directorio_<?php echo $directorio['id_directorio']; ?>?"
-                data-id="<?php echo $directorio['id_directorio']; ?>"
-                <?php echo ($directorio['id_directorio'] == 5) ? 'data-bs-toggle="modal" data-bs-target="#updateUser"' : ''; ?>
+            <a href="<?php echo BASE_HOME . $dir_url; ?>?link=<?php echo $id_menu_link; ?>"
+                id="directorio_<?php echo $id_menu_link; ?>?"
+                data-id="<?php echo $id_menu_link; ?>"
+                <?php echo ($id_menu_link == 5) ? 'data-bs-toggle="modal" data-bs-target="#updateUser"' : ''; ?>
                 class="sidebar-item d-flex align-items-center text-decoration-none mb-1 
             <?php echo ($is_active ? 'active' : ''); ?>">
-                <i class="<?php echo $directorio['icono_directorio']; ?> me-3"></i>
-                <span><?php echo $directorio['nombre_directorio'] . ' - ' . $directorio['id_directorio']; ?></span>
+                <i class="<?php echo $link['icono_menu']; ?> me-3"></i>
+                <span><?php echo $link['nombre_menu'] . ' - ' . $id_menu_link . '-' . $link['url_menu']; ?></span>
             </a>
         <?php } ?>
     </div>

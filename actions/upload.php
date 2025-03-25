@@ -22,7 +22,7 @@ if (!empty($_FILES)) {
 	$tamano = $_FILES['file']['size'];
 	$id_usuario = trim($_POST['id_usuario']);
 	$id_folder_seleccionado = trim($_POST['id_folder_seleccionado']);
-	$id_directorio_seleccionado = trim($_POST['id_directorio_seleccionado']) ?? 1;
+	$id_menu_link = trim($_POST['id_menu_link']) ?? 1;
 
 	// Generar un nombre único basado en timestamp y un número aleatorio
 	$newFileName = time() . '_' . mt_rand(1000, 9999) . '.' . $extension;
@@ -42,8 +42,8 @@ if (!empty($_FILES)) {
 		$tamanoEsc = intval($tamano);
 
 		// Construir consulta SQL
-		$query = "INSERT INTO tbl_drive_files (nombre_original, nombre_sistema, ruta, extension, tipo_mime, tamano, fecha_subida, id_usuario, id_folder, id_directorio) 
-                 VALUES ('$nombreOriginalEsc', '$newFileNameEsc', '$rutaRelativaEsc', '$extensionEsc', '$tipoMimeEsc', $tamanoEsc, NOW(), $id_usuario, $id_folder_seleccionado, $id_directorio_seleccionado)";
+		$query = "INSERT INTO tbl_drive_files (nombre_original, nombre_sistema, ruta, extension, tipo_mime, tamano, fecha_subida, id_usuario, id_folder, id_menu_link) 
+                 VALUES ('$nombreOriginalEsc', '$newFileNameEsc', '$rutaRelativaEsc', '$extensionEsc', '$tipoMimeEsc', $tamanoEsc, NOW(), $id_usuario, $id_folder_seleccionado, $id_menu_link)";
 		// Ejecutar la consulta
 		if ($servidor->query($query)) {
 			// Obtener el ID insertado

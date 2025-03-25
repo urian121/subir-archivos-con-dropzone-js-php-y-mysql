@@ -8,8 +8,8 @@
             <div class="modal-body">
                 <form method="POST" action="<?= CREATE_FOLDER ?>" autocomplete="off" class="pt-3">
                     <input type="hidden" name="created_by" value="<?php echo $infUser['id']; ?>" class="form-control">
-                    <input type="hidden" name="id_directorio" id="id_directorio" value="">
-                    <input type="hidden" name="id_folder_padre" id="id_folder_padre" value="<?php echo isset($_GET['dir']) ? trim($_GET['dir']) : ''; ?>">
+                    <input type="hidden" name="id_menu_link" id="id_menu_link" value="">
+                    <input type="hidden" name="id_folder_padre" id="id_folder_padre" value="<?php echo isset($_GET['folder']) ? trim($_GET['folder']) : ''; ?>">
 
                     <div class="mb-3">
                         <label for="nombre_folder" class="form-label">Nombre de la carpeta</label>

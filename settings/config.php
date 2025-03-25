@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 // Configuración de la base de datos
 // ----------------------------
 define('DB_HOST', 'localhost');
-define('DB_NAME', 'drive_edumetrics');
+define('DB_NAME', 'bd_drive');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');
 

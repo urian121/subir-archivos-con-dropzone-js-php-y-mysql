@@ -9,7 +9,7 @@ $folderId = trim($data['folder_id']);
 
 // Actualizar la base de datos, mover el archivo a la nueva carpeta
 $queryUpdate = "UPDATE tbl_drive_files 
-    SET id_folder = '$folderId', id_directorio = NULL
+    SET id_folder = '$folderId', id_menu_link = NULL
     WHERE id_drive = '$fileId'";
 $query = $servidor->query($queryUpdate);
 

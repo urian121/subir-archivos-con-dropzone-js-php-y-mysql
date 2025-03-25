@@ -30,10 +30,10 @@ include_once '../settings/config.php';
 
 	<div class="container-fluid p-0">
 		<?php
-		$id_directorio = isset($_GET['link']) ? trim($_GET['link']) : 1;
+		$link_seleccionado = isset($_GET['link']) ? trim($_GET['link']) : 1;
 		include_once(SETTINGS_BD);
 		include(FUNCTIONS_PATH . '/funciones.php');
-		$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $id_directorio);
+		$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $link_seleccionado);
 
 		include(BASE_PATH_COMPONENTS . '/header.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
@@ -41,10 +41,10 @@ include_once '../settings/config.php';
 
 		<div class="d-flex">
 			<?php
-			$directorios = obtenerDirectorios($servidor);
+		$links_menu = getLinksMenu($servidor);
 			include(BASE_PATH_COMPONENTS . '/sidebar.php');
 			include(BASE_PATH_COMPONENTS . '/modal_file.php');
-			$list_files = obtenerArchivosPapelera($servidor, $query_search = '');
+		$list_files = obtenerArchivosPapelera($servidor);
 			?>
 
 

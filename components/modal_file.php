@@ -11,7 +11,7 @@
                 <form action="#" method="POST" class="dropzone needsclick" id="demo-upload" enctype="multipart/form-data">
                     <input type="hidden" name="id_usuario" value="<?php echo $infUser['id']; ?>" class="form-control">
                     <input type="hidden" name="id_folder_seleccionado" id="id_folder_seleccionado">
-                    <input type="hidden" name="id_directorio_seleccionado" id="id_directorio_seleccionado">
+                    <input type="hidden" name="id_menu_link" id="id_menu_link">
                     <div class="dz-message needsclick">
                         <span class="text">
                             <img src="<?php echo ASSETS_IMG; ?>/uploadsfiles.png" alt="Upload" style="width: 40px;" />

@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 include_once '../settings/auth.php';
 $infUser = obtenerSesionActiva();
 if (!$infUser) {
@@ -35,20 +31,21 @@ include_once '../settings/config.php';
 
 	<div class="container-fluid p-0">
 		<?php
-	$link_seleccionado = isset($_GET['link']) ? trim($_GET['link']) : 1;
+		$link_seleccionado = isset($_GET['link']) ? trim($_GET['link']) : 1;
 		include_once(SETTINGS_BD);
 		include(FUNCTIONS_PATH . '/funciones.php');
-	$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $link_seleccionado);
+		$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $link_seleccionado);;
+
 		include(BASE_PATH_COMPONENTS . '/header.php');
-	include(BASE_PATH_COMPONENTS . '/modalEliminarArchivo.html');
-	include(BASE_PATH_COMPONENTS . '/modalEliminarCarpeta.html');
+		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivo.html');
+		include(BASE_PATH_COMPONENTS . '/modalEliminarCarpeta.html');
 		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
 		?>
 
 		<div class="d-flex">
 			<?php
-	$links_menu = getLinksMenu($servidor);
+			$links_menu = getLinksMenu($servidor);
 			include(BASE_PATH_COMPONENTS . '/sidebar.php');
 			include(BASE_PATH_COMPONENTS . '/modal_file.php');
 			?>
@@ -57,11 +54,12 @@ include_once '../settings/config.php';
 				<div class="mt-4 mb-4">
 					<div class="row">
 						<?php
-	$folderSelected = isset($_GET['folder']) ? trim($_GET['folder']) : null;
+						$folderSelected = isset($_GET['folder']) ? trim($_GET['folder']) : null;
 						include(BASE_PATH_COMPONENTS . '/folders.php');
 						?>
 					</div>
 				</div>
+
 
 				<div id="searchResults" class="row">
 					<?php
@@ -81,6 +79,7 @@ include_once '../settings/config.php';
 
 
 	<?php include(BASE_PATH_COMPONENTS . '/footerJS.php'); ?>
+
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
 			// Hacer los archivos arrastrables
@@ -93,18 +92,19 @@ include_once '../settings/config.php';
 			document.querySelectorAll(".connected-list").forEach((folder) => {
 				new Sortable(folder, {
 					group: "shared",
+					animation: 150,
 					onAdd: function(evt) {
-						let fileId = evt.item.getAttribute("data-id"); // Obtener el ID del archivo
+						let fileId = evt.item.getAttribute("data-id");
 						let folderId = evt.to.closest(".folder").getAttribute("data-folder");
+						let ruta = "../actions/move_file.php";
 
 						// Ocultar el archivo en la lista original
 						let draggedFile = document.querySelector(`.file-item[data-id='${fileId}']`);
 						if (draggedFile) {
 							draggedFile.style.display = "none";
 						}
-
 						// Enviar datos al backend
-						fetch(`${ruta_base}actions/move_file.php`, {
+						fetch(ruta, {
 								method: "POST",
 								headers: {
 									"Content-Type": "application/json",
@@ -118,7 +118,7 @@ include_once '../settings/config.php';
 							.then((html) => {
 								console.log('Todo OK');
 							})
-							.catch((error) => console.error("Error al mover el archivo:", error));
+							.catch((error) => console.error("Error al cargar archivos:", error));
 					},
 				});
 			});

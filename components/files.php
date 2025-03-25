@@ -31,7 +31,7 @@ if ($list_files) {
                             Descargar
                         </a>
                     </li>
-                    <?php if ($id_directorio != '4') { ?>
+                    <?php if ($link_seleccionado != '4') { ?>
                         <li id="linkEnPapelera">
                             <a class="dropdown-item eliminar-archivo" onclick="sendFileTrash('<?php echo $archivo['id_drive']; ?>')" href="#" data-id="<?php echo $archivo['id_drive']; ?>"
                                 data-nombre="<?php echo htmlspecialchars($archivo['nombre_original']); ?>"><i
