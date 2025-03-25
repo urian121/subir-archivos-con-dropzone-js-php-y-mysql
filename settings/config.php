@@ -20,7 +20,7 @@ define('DB_PASSWORD', '');
 // ----------------------------
 // Configuración de las rutas
 // ----------------------------
-define('NAME_APP', 'driver-edumetrics');
+define('NAME_APP', 'driver');
 define('BASE_HOME', 'http://localhost/' . NAME_APP . '/');
 define('BASE_PATH', __DIR__ . '../../');
 //define('BASE_HOME', 'https://tecnoescuelagaitan.com/' . NAME_APP . '/');

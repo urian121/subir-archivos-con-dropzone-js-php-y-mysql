@@ -14,7 +14,7 @@ include_once '../settings/config.php'; // obtener parametros de configuracion
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edumetrics Drive</title>
+    <title>Drive</title>
     <link rel="shortcut icon" href="../assets/imgs/icon.ico" />
     <link rel="stylesheet" href="../assets/css/login.css">
     <link rel="stylesheet" href="../assets/css/loader.css">

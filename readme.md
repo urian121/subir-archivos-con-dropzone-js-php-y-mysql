@@ -1,52 +1,49 @@
+Driver - Sistema de Almacenamiento en la Nube
+
+## Descripción
+**Driver** es una aplicación web similar a Google Drive, desarrollada con PHP, MySQL y JavaScript. Permite a los usuarios almacenar, organizar y compartir archivos en la nube de manera sencilla y eficiente.
+
+## Características principales
+- **Gestión de archivos**: Subida, descarga y organización de archivos.
+- **Sistema de carpetas**: Creación y navegación por estructura de carpetas.
+- **Papelera de reciclaje**: Recuperación de archivos eliminados.
+- **Compartir archivos**: Funcionalidad para compartir contenido con otros usuarios.
+- **Autenticación de usuarios**: Sistema de registro e inicio de sesión.
+
+## Tecnologías utilizadas
+- **PHP** (Backend)
+- **MySQL** (Base de datos)
+- **JavaScript** (Frontend)
+- **HTML/CSS** (Estructura y estilos)
+- **Bootstrap** (Framework para el front)
 
 ## Estructura del proyecto
+El proyecto sigue una arquitectura modular con carpetas dedicadas a:
+- Acciones específicas.
+- Componentes de interfaz.
+- Funciones de autenticación.
 
-📂 actions/
-📂 archivos-compartidos/
-│── 📄 index.php
-📂 archivos-en-papelera/
-│── 📄 index.php
-📂 assets/
-│── 📂 🎨 css/
-│── 📂 🖼 imgs/
-│── 📂 📜 js/
-📂 auth/
-│── 📄 index.php
-📂 components/
-│── 📄 files.php
-│── 📄 footerJS.php
-│── 📄 header.php
-│── ......
-📂 functions/
-│── 📄 action_login.php
-│── 📄 funciones.php
-📂 settings/
-│── 📄 auth.php
-│── 📄 config.php
-│── 📄 settingBD.php
-📂 uploads/  
-    # 📄 Aquí se almacenan los archivos subidos
-📄 index.php
+## Instalación
+Sigue estos pasos para instalar y ejecutar el proyecto:
 
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/usuario/driver.git
+   ```
 
+2. Configura un servidor web con soporte para PHP y MySQL (por ejemplo, XAMPP o Laragon).
 
+3. Importa la base de datos:
+   - Encuentra el archivo `database.sql` en la carpeta raíz del proyecto.
+   - Usa phpMyAdmin o una herramienta similar para importar este archivo en tu servidor MySQL.
 
-Sí, para manejar subcarpetas dentro de una carpeta principal, puedes modificar tu tabla tbl_drive_folders agregando una columna id_folder_padre, o puedes crear una nueva tabla para manejar la jerarquía.
-Opción 1: Modificar tbl_drive_folders
+4. Configura el archivo de conexión a la base de datos:
+   - Edita el archivo `config/database.php` con las credenciales de tu servidor MySQL.
 
-Puedes agregar una columna id_folder_padre que permita relacionar carpetas con sus subcarpetas.
+5. Inicia el servidor web y accede a la aplicación desde tu navegador en `http://localhost/driver`.
 
-ALTER TABLE `tbl_drive_folders` 
-ADD COLUMN `id_folder_padre` INT UNSIGNED DEFAULT NULL COMMENT 'ID de la carpeta padre, NULL si es una carpeta raíz';
-
-Así, cuando crees una subcarpeta dentro de una carpeta principal, almacenarás el id_folder de la carpeta padre en id_folder_padre. Si id_folder_padre es NULL, significa que la carpeta es de nivel raíz.
-
-
-WITH RECURSIVE subcarpetas AS (
-    SELECT * FROM tbl_drive_folders WHERE id_folder = 11
-    UNION ALL
-    SELECT f.* FROM tbl_drive_folders f
-    INNER JOIN subcarpetas s ON f.id_folder_padre = s.id_folder
-)
-SELECT * FROM subcarpetas;
-
+## Ejemplo de uso
+1. Regístrate o inicia sesión en la aplicación.
+2. Sube archivos desde tu dispositivo.
+3. Organiza tus archivos en carpetas.
+4. Comparte archivos con otros usuarios mediante enlaces.

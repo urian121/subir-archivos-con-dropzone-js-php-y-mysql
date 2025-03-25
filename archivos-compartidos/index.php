@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 include_once '../settings/auth.php';
 $infUser = obtenerSesionActiva();
 if (!$infUser) {
@@ -17,7 +13,7 @@ include_once '../settings/config.php';
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Edumetrics Drive</title>
+	<title>Drive</title>
 	<link rel="shortcut icon" href="<?php echo ASSETS_IMG ?>/icon.ico" />
 	<link rel="stylesheet" href="<?php echo ASSETS_CSS ?>/bootstrap.min.css?v=<?php echo mt_rand(); ?>">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
@@ -35,29 +31,29 @@ include_once '../settings/config.php';
 
 	<div class="container-fluid p-0">
 		<?php
-	$link_seleccionado = isset($_GET['link']) ? trim($_GET['link']) : 1;
+		$link_seleccionado = isset($_GET['link']) ? trim($_GET['link']) : 1;
 		include_once(SETTINGS_BD);
 		include(FUNCTIONS_PATH . '/funciones.php');
-	$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $link_seleccionado);
+		$archivos_por_extensiones = archivosPorExtensionYDirectorio($servidor, $link_seleccionado);
 		include(BASE_PATH_COMPONENTS . '/header.php');
-	include(BASE_PATH_COMPONENTS . '/modalEliminarArchivo.html');
-	include(BASE_PATH_COMPONENTS . '/modalEliminarCarpeta.html');
+		include(BASE_PATH_COMPONENTS . '/modalEliminarArchivo.html');
+		include(BASE_PATH_COMPONENTS . '/modalEliminarCarpeta.html');
 		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
 		?>
 
 		<div class="d-flex">
 			<?php
-	$links_menu = getLinksMenu($servidor);
+			$links_menu = getLinksMenu($servidor);
 			include(BASE_PATH_COMPONENTS . '/sidebar.php');
-			include(BASE_PATH_COMPONENTS . '/modal_file.php');
+			include(BASE_PATH_COMPONENTS . '/modal_upload_files.php');
 			?>
 
 			<div class="flex-grow-1 p-4 content-files">
 				<div class="mt-4 mb-4">
 					<div class="row">
 						<?php
-	$folderSelected = isset($_GET['folder']) ? trim($_GET['folder']) : null;
+						$folderSelected = isset($_GET['folder']) ? trim($_GET['folder']) : null;
 						include(BASE_PATH_COMPONENTS . '/folders.php');
 						?>
 					</div>

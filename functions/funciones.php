@@ -11,9 +11,9 @@ function obtenerArchivosCompartidos($servidor, $link_seleccionado)
             nombre_sistema, extension, ruta 
         FROM tbl_drive_files
         WHERE activo = 1 
-        AND id_menu_link = '$link_seleccionado'
         AND en_papelera = 0
-        AND id_folder = 0
+        AND id_folder is null
+        AND id_menu_link = '$link_seleccionado'
         ORDER BY id_drive DESC";
     $resultado = $servidor->query($query);
     $archivos = [];

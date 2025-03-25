@@ -10,7 +10,7 @@
             <div class="modal-body">
                 <form action="#" method="POST" class="dropzone needsclick" id="demo-upload" enctype="multipart/form-data">
                     <input type="hidden" name="id_usuario" value="<?php echo $infUser['id']; ?>" class="form-control">
-                    <input type="hidden" name="id_folder_seleccionado" id="id_folder_seleccionado">
+                    <input type="hidden" name="id_folder_seleccionado" id="id_folder_seleccionado" value="<?php echo isset($_GET['folder']) ? trim($_GET['folder']) : ''; ?>">
                     <input type="hidden" name="id_menu_link" id="id_menu_link">
                     <div class="dz-message needsclick">
                         <span class="text">

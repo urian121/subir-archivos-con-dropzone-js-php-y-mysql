@@ -13,7 +13,7 @@ include_once '../settings/config.php';
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Edumetrics Drive</title>
+	<title>Drive</title>
 	<link rel="shortcut icon" href="<?php echo ASSETS_IMG ?>/icon.ico" />
 	<link rel="stylesheet" href="<?php echo ASSETS_CSS ?>/bootstrap.min.css?v=<?php echo mt_rand(); ?>">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
@@ -47,7 +47,7 @@ include_once '../settings/config.php';
 			<?php
 			$links_menu = getLinksMenu($servidor);
 			include(BASE_PATH_COMPONENTS . '/sidebar.php');
-			include(BASE_PATH_COMPONENTS . '/modal_file.php');
+			include(BASE_PATH_COMPONENTS . '/modal_upload_files.php');
 			?>
 
 			<div class="flex-grow-1 p-4 content-files">
