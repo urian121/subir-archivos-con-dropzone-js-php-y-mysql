@@ -10,8 +10,7 @@ function obtenerArchivosCompartidos($servidor, $link_seleccionado)
             id_drive, nombre_original,
             nombre_sistema, extension, ruta 
         FROM tbl_drive_files
-        WHERE activo = 1 
-        AND en_papelera = 0
+        WHERE en_papelera = 0
         AND id_folder is null
         AND id_menu_link = '$link_seleccionado'
         ORDER BY id_drive DESC";
@@ -30,8 +29,7 @@ function obtenerArchivosCompartidos($servidor, $link_seleccionado)
 function archivosPorExtensionYDirectorio($servidor, $link_seleccionado)
 {
     $query = "SELECT extension FROM tbl_drive_files 
-        WHERE activo = 1
-        AND id_menu_link = '$link_seleccionado' GROUP BY extension";
+        WHERE id_menu_link = '$link_seleccionado' GROUP BY extension";
     $resultado = $servidor->query($query);
 
     if (!$resultado) {
@@ -74,8 +72,7 @@ function obtenerArchivosPorCarpeta($servidor, $folderId)
 {
     $folderId = trim($folderId);
     $query = "SELECT * FROM tbl_drive_files 
-        WHERE activo = 1 
-        AND en_papelera = 0 
+        WHERE en_papelera = 0 
         AND id_folder = '$folderId' 
     ORDER BY id_drive DESC";
     $result = mysqli_query($servidor, $query);
@@ -150,7 +147,7 @@ function getPerfil($servidor, $id_user)
 function obtenerArchivosPapelera($servidor)
 {
     $archivos = [];
-    $sql = "SELECT * FROM tbl_drive_files WHERE en_papelera = 1 AND activo = 1 ORDER BY id_drive DESC";
+    $sql = "SELECT * FROM tbl_drive_files WHERE en_papelera = 1 ORDER BY id_drive DESC";
     $result = $servidor->query($sql);
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -196,7 +193,7 @@ function obtenerCarpetasPorDirectorio($servidor, $id_menu_link)
 function obtenerArchivosPorExtension($servidor, $extension, $id_menu_link)
 {
 
-    $where = "WHERE activo = 1 AND id_menu_link ='$id_menu_link'";
+    $where = "WHERE id_menu_link ='$id_menu_link'";
     if ($extension !== 'all' && $extension !== '') {
         $where .= " AND extension LIKE '%$extension%'";
     }

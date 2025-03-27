@@ -1,4 +1,5 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include('../settings/config.php');
 include('../settings/settingBD.php');
 
@@ -24,4 +25,7 @@ if ($servidor->query($query) === TRUE) {
     header("Location: " . $_SERVER['HTTP_REFERER']);
 } else {
     echo "Error: " . $query . "<br>" . $servidor->error;
+}
+} else {
+    echo "Error: Método de solicitud no permitido.";
 }

@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         } else {
-            header("Location: " . BASE_HOME . '?b=1'); // Usuario no encontrado o inactivo
+            header("Location: " . BASE_HOME . '?b=1');
             exit();
         }
     } elseif ($action == "login_estudiante") {
@@ -87,7 +87,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
         } else {
-            header("Location: " . BASE_HOME . '?b=1'); // Usuario no encontrado o inactivo
+            header("Location: " . BASE_HOME . '?b=1');
             exit();
         }
     } elseif ($action == "addUser") {

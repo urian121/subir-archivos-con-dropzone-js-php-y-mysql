@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 25-03-2025 a las 19:47:22
+-- Tiempo de generación: 27-03-2025 a las 15:15:12
 -- Versión del servidor: 8.0.30
 -- Versión de PHP: 8.1.10
 
@@ -37,7 +37,6 @@ CREATE TABLE `tbl_drive_files` (
   `tamano` int NOT NULL COMMENT 'Tamaño en bytes',
   `fecha_subida` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_usuario` int DEFAULT NULL COMMENT 'ID del usuario que subió el archivo',
-  `activo` tinyint(1) NOT NULL DEFAULT '1',
   `en_papelera` tinyint(1) NOT NULL DEFAULT '0',
   `id_folder` int UNSIGNED DEFAULT NULL,
   `id_menu_link` int DEFAULT NULL
@@ -111,7 +110,7 @@ CREATE TABLE `tbl_users` (
 
 INSERT INTO `tbl_users` (`id_user`, `email_user`, `password_user`, `name_user`, `create_user`, `estatus_user`, `sesion_desde_user`, `sesion_hasta_user`) VALUES
 (2, 'abelardo@gmail.com', '$2y$10$P6xmGncFmN3/6itQxpTlceH8WmdSyPQiFZV52puWuGi.bI4Nu2Leu', 'Urian', '2024-11-07 15:47:51', 1, NULL, NULL),
-(3, 'dev@gmail.com', '$2y$10$iGX2nmHHYXuxUccXg7jlH.7RXeq3Yr4iy0voTpXR.nBKKP.fRZABK', 'Urian Viera', '2024-11-07 15:48:34', 1, '2025-03-25 13:34:PM', '2025-03-25 10:39:AM');
+(3, 'dev@gmail.com', '$2y$10$iGX2nmHHYXuxUccXg7jlH.7RXeq3Yr4iy0voTpXR.nBKKP.fRZABK', 'Urian Viera', '2024-11-07 15:48:34', 1, '2025-03-25 17:06:PM', '2025-03-25 10:39:AM');
 
 --
 -- Índices para tablas volcadas

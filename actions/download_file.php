@@ -8,7 +8,7 @@ $id_archivo = trim($_REQUEST['id_drive']);
 
 $path = "../uploads/";
 // Consultar el archivo en la base de datos
-$query = "SELECT * FROM tbl_drive_files WHERE id_drive = $id_archivo AND activo = 1";
+$query = "SELECT * FROM tbl_drive_files WHERE id_drive = $id_archivo";
 $resultado = $servidor->query($query);
 
 // Verificar si el archivo existe
