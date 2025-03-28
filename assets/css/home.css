@@ -148,3 +148,19 @@ select.custom-select {
 .text-black{
   color: black;
 }
+#linkVolver{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background-color: #646464;
+  color: white !important;
+  border: none;
+  border-radius: 15px 0px;
+  padding: 3px 10px;
+}
+#linkVolver a:hover{
+  opacity: 0.8;
+}
+.link-folder-activo{
+font-weight: 600;
+}

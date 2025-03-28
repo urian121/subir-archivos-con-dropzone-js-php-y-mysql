@@ -47,11 +47,9 @@ if ($list_files) {
                     <span class="text-truncate"><?php echo $archivo['nombre_original']; ?></span>
                 </div>
                 <div class="card-body d-flex flex-column">
-                    <a href="<?php echo UPLOADS_PATH . $archivo['nombre_sistema']; ?>" target="_blank" class="text-decoration-none text-dark">
-                        <div class="file-preview mb-3 d-flex justify-content-center align-items-center" style="height: 130px;">
-                            <?php echo $preview; ?>
-                        </div>
-                    </a>
+                    <div class="file-preview mb-3 d-flex justify-content-center align-items-center" style="height: 130px;">
+                        <?php echo $preview; ?>
+                    </div>
                 </div>
             </div>
         </div>

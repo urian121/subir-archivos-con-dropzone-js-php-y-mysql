@@ -1,5 +1,5 @@
 <?php
-include_once 'settings/auth.php';
+include_once 'middleware/authMiddleware.php';
 $infUser = obtenerSesionActiva();
 if (!$infUser) {
 	header("location:./auth");

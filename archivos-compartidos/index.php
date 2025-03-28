@@ -1,5 +1,5 @@
 <?php
-include_once '../settings/auth.php';
+include_once '../middleware/authMiddleware.php';
 $infUser = obtenerSesionActiva();
 if (!$infUser) {
 	header("location:../auth");
@@ -40,6 +40,7 @@ include_once '../settings/config.php';
 		include(BASE_PATH_COMPONENTS . '/modalEliminarCarpeta.html');
 		include(BASE_PATH_COMPONENTS . '/modal_create_folder.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
+		include(BASE_PATH_COMPONENTS . '/modalPreviewImg.html');
 		?>
 
 		<div class="d-flex">
@@ -50,10 +51,16 @@ include_once '../settings/config.php';
 			?>
 
 			<div class="flex-grow-1 p-4 content-files">
+				<?php
+				// Si existe una carpeta seleccionada
+				$folderSelected = isset($_GET['folder']) ? trim($_GET['folder']) : null;
+				// Obtener nombre de la carpeta seleccionada
+				$nombre_carpeta_seleccionada = obtenerNombreCarpeta($servidor, $folderSelected);
+				include(BASE_PATH_COMPONENTS . '/volver.php');
+				?>
 				<div class="mt-4 mb-4">
 					<div class="row">
 						<?php
-						$folderSelected = isset($_GET['folder']) ? trim($_GET['folder']) : null;
 						include(BASE_PATH_COMPONENTS . '/folders.php');
 						?>
 					</div>

@@ -4,6 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const sidebarItems = document.querySelectorAll(".sidebar-item");
   const linkEnPapelera = document.querySelector("#linkEnPapelera");
   let folder_activo = document.querySelector(".active-folder");
+  // Seleccionar todas las carpetas que no estan activas es decir que no estan seleccionadas
+  // let inactiveFolders = document.querySelectorAll(".folder:not(.active-folder)");
+  let folders = document.querySelectorAll(".folder");
+  let linkVolver = document.querySelector("#linkVolver");
 
   // Función para actualizar el estado del botón según el id_menu_link
   function actualizarEstadoBoton() {
@@ -27,6 +31,14 @@ document.addEventListener("DOMContentLoaded", function () {
         btnCreateFolder.classList.add("disabled"); // Añadir clase para estilos
         btnCreateFolder.style.pointerEvents = "none"; // Evita clics
         btnCreateFolder.style.opacity = "0.5"; // Visualmente deshabilitado
+
+        // recorrer todas las carpetas que no son activas y añadir la clase d-none para ocultarlas
+        folders.forEach((folder) => {
+          folder.classList.add("d-none");
+        });
+
+        // Habitilitar el link de volver
+        linkVolver.classList.remove("d-none"); // Eliminar clase de volver
       }
     }
   }
@@ -58,4 +70,28 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#id_menu_link").value =
       localStorage.getItem("id_menu_link");
   });
+
+  //Mostrar imagen en la Modal
+  let linkPreviewImg = document.querySelectorAll(".linkPreviewImg");
+  if (linkPreviewImg) {
+    linkPreviewImg.forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Seleccionar el src de la imagen dentro del enlace clickeado
+        let imgElement = this.querySelector("img");
+        let imgSrc = imgElement.getAttribute("src");
+
+        // Mostrar el modal manualmente
+        let idModal = document.querySelector("#modalPreviewImg");
+        const modal = new bootstrap.Modal(idModal);
+        modal.show();
+
+        // Insertar la imagen en el modal
+        document.querySelector(
+          ".body-img-preview"
+        ).innerHTML = `<img src="${imgSrc}" alt="Imagen de perfil" style="max-width: 100%;">`;
+      });
+    });
+  }
 });

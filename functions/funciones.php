@@ -91,19 +91,26 @@ function obtenerArchivosPorCarpeta($servidor, $folderId)
 function obtenerVistaPrevia($archivo)
 {
     $extension = strtolower(pathinfo($archivo['nombre_sistema'], PATHINFO_EXTENSION));
-
+    // Vista previa de imágenes
+    $ruta_file = UPLOADS_PATH . $archivo['nombre_sistema'];
     if (in_array($extension, ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'])) {
-        // Vista previa de imágenes y SVG
-        $ruta_file = UPLOADS_PATH . $archivo['nombre_sistema'];
-        return "<img src='{$ruta_file}' class='file-preview-img' alt='Vista previa'>";
+        return "<a class='linkPreviewImg' href='{$ruta_file}' title='Ver vista previa'>
+                <img src='{$ruta_file}' class='file-preview-img' alt='{$archivo['nombre_sistema']}'>
+            </a>";
     } elseif (in_array($extension, ['mp4', 'webm', 'ogg'])) {
         // Vista previa de videos
-        return "<video class='file-preview-video' controls>
+        return "
+            <a href='{$archivo['ruta']}' target='_blank'>
+                <video class='file-preview-video' controls>
                     <source src='{$archivo['ruta']}' type='video/{$extension}'>
                     Tu navegador no soporta el video.
-                </video>";
+                </video>
+            </a>";
     }
-    return ''; // Si no es un tipo soportado, retornar vacío
+    // Enlace simple para tipos de archivo no soportados
+    return "<a href='{$ruta_file}' target='_blank' title='Abrir archivo' class='text-decoration-none'>
+                <i class='bi bi-file-earmark-text fs-1'></i>
+            </a>";
 }
 
 function obtenerIconoArchivo($extension)
@@ -207,4 +214,15 @@ function obtenerArchivosPorExtension($servidor, $extension, $id_menu_link)
         }
     }
     return $archivos;
+}
+
+// Funcion para retornar el nombre de la carpeta seleccionada
+function obtenerNombreCarpeta($servidor, $id_folder)
+{
+    $sql = "SELECT nombre_folder FROM tbl_drive_folders WHERE id_folder = '{$id_folder}' AND estatus_folder = 1 LIMIT 1";
+    $result = $servidor->query($sql);
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        return $row['nombre_folder'];
+    }
 }

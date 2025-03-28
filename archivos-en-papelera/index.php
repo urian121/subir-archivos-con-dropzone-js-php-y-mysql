@@ -1,5 +1,5 @@
 <?php
-include_once '../settings/auth.php';
+include_once '../middleware/authMiddleware.php';
 $infUser = obtenerSesionActiva();
 if (!$infUser) {
 	header("location:../auth");
@@ -37,6 +37,7 @@ include_once '../settings/config.php';
 
 		include(BASE_PATH_COMPONENTS . '/header.php');
 		include(BASE_PATH_COMPONENTS . '/modal_update_user.php');
+		include(BASE_PATH_COMPONENTS . '/modalPreviewImg.html');
 		?>
 
 		<div class="d-flex">

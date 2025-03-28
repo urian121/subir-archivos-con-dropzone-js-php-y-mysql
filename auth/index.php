@@ -1,6 +1,6 @@
 <?php
-include_once '../settings/auth.php'; // valida si hay session activa
-$infUser = obtenerSesionActiva();
+                        include_once '../middleware/authMiddleware.php'; // valida si hay session activa
+                        $infUser = obtenerSesionActiva();
 // si hay sesion activa, redirigir al home
 if ($infUser) {
     header("location:../");
