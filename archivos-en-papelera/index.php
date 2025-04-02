@@ -50,19 +50,16 @@ include_once '../settings/config.php';
 
 
 			<div class="flex-grow-1 p-4 content-files">
+				<?php if (count($list_files)): ?>
+					<section class="text-white" id="linkLimpiarPapelera">
+						<a href="<?php echo CLEAR_TRASH; ?>?id_user=<?php echo $infUser['id']; ?>" class=" text-decoration-none text-white" title="Volver">
+							<i class="bi bi-trash me-3"></i>
+							Limpiar la papelera
+						</a>
+					</section>
+				<?php endif; ?>
 				<div class="mt-4 mb-4">
-					<?php
-					if (count($list_files) > 0) { ?>
-						<div class="row">
-							<div class="col mb-5">
-								<a href="<?php echo CLEAR_TRASH; ?>">
-									<i class="bi bi-trash me-3"></i>
-									Limpiar la papelera</a>
-							</div>
-						</div>
-					<?php } ?>
-
-					<div id="searchResults" class="row">
+					<div id="searchResults" class="row mt-5">
 						<?php
 						include(BASE_PATH_COMPONENTS . '/files.php');
 						?>

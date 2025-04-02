@@ -148,19 +148,26 @@ select.custom-select {
 .text-black{
   color: black;
 }
-#linkVolver{
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background-color: #646464;
-  color: white !important;
-  border: none;
-  border-radius: 15px 0px;
-  padding: 3px 10px;
-}
-#linkVolver a:hover{
-  opacity: 0.8;
-}
 .link-folder-activo{
 font-weight: 600;
+}
+a.volver-link:hover {
+  text-decoration: underline !important;
+  color: #000;
+}
+.breadcrumb {
+  justify-content: center;
+  /* Centra el contenido del breadcrumb */
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "bootstrap-icons";
+  content: "\f285";
+  /* ícono bi-chevron-right */
+  font-size: 20px;
+  color: #6c757d;
+  padding: 0 0.5rem;
 }

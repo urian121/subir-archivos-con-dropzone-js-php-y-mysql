@@ -18,15 +18,15 @@
                         <li>
                             <a class="dropdown-item" href="<?php echo BASE_HOME; ?>actions/estatus_public_folder.php?id_folder=<?= $folder['id_folder']; ?>&estatus=<?= $folder['public']; ?>">
                                 <?php if ($folder['public'] == 1) { ?>
-                                    <i class="bi bi-lock fw-bold text-black"></i> Bloquear
+                                    <i class="bi bi-eye-slash fw-bold text-black"></i> Ocultar carpeta
                                 <?php } else { ?>
-                                    <i class="bi bi-eye fw-bold text-success"></i> Publica
+                                    <i class="bi bi-eye fw-bold text-success"></i> Hacer pública
                                 <?php } ?>
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item" onclick="deleteFolder('<?php echo $folder['id_folder']; ?>')" href="#">
-                                <i class="bi bi-trash"></i> Eliminar
+                                <i class="bi bi-trash"></i> Eliminar carpeta
                             </a>
                         </li>
                     </ul>

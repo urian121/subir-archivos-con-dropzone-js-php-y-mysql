@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
     paramName: "file", // Nombre del parámetro de archivo
     maxFilesize: 10, // Tamaño máximo en MB
     maxFiles: 10, // Cantidad máxima de archivos
+    parallelUploads: 3, // Subidas paralelas, con esto, solo 3 archivos se suben a la vez, y pasará automáticamente al siguiente cuando termine.
     acceptedFiles:
       "image/*,application/pdf,text/plain,.zip,.tar,.gz,.sql,.md,.markdown,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,video/*,.css,.html,.js,.json,.txt,.svg",
     dictDefaultMessage: "Arrastra y suelta archivos aquí o haz clic para subir",
@@ -55,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Todos los archivos han sido subidos.");
       // Eliminar todos los archivos de la zona de carga
       myDropzone.removeAllFiles(true);
+      // myDropzone.removeFile(file); // Eliminar el archivo de la vista previa
 
       // Cerrar el modal solo si no hubo errores
       var modal = bootstrap.Modal.getInstance(
@@ -86,4 +88,20 @@ document.addEventListener("DOMContentLoaded", function () {
       myDropzone.removeFile(file);
     }
   });
+
+  // Alerta si se intenta agregar más archivos de los permitidos
+  myDropzone.on("maxfilesexceeded", function (file) {
+    alert("Solo se permiten subir un máximo de 10 archivos.");
+    myDropzone.removeFile(file); // Opcional: remueve el archivo extra
+  });
+
+  /**
+   * Evento se dispara cada vez que un archivo se sube correctamente, y puedes usarlo para remover automáticamente ese archivo de la vista previa
+   * Eliminar el archivo de la vista previa cuando se suba con éxito
+   */
+  myDropzone.on("success", function (file, response) {
+    console.log("Archivo subido con éxito:", file);
+    // myDropzone.removeFile(file);
+  });
+  
 });

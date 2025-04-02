@@ -2,7 +2,7 @@
     <div class="px-3">
         <button id="btnUploadFile" onclick="abrirModalConValor('modalUploadFile', '#id_menu_link')" class="new-button btn d-flex align-items-center">
             <i class="bi bi-plus me-2"></i>
-            <span>Subir nuevo archivo</span>
+            <span>Subir archivo</span>
         </button>
     </div>
 

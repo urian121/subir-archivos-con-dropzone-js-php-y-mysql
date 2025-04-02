@@ -68,7 +68,7 @@ include_once '../settings/config.php';
 				</div>
 
 
-				<div id="searchResults" class="row">
+				<div id="searchResults" class="row mt-5">
 					<?php
 					// Si existe una carpeta seleccionada
 					if ($folderSelected) {
